@@ -5,11 +5,11 @@
 
 ## Team members
 
-| Student Number | Name        | 
-|----------------|-------------|
-| s5277614       | Gemma Manns |
-| s222222        | Full name   | 
-| s333333        | Full name   | 
+| Student Number | Name          | 
+|----------------|---------------|
+| s5277614       | Gemma Manns   |
+| s5384766       | Joshua Wagner | 
+| s333333        | Full name     | 
 
 
 <div style="page-break-after: always;"></div>

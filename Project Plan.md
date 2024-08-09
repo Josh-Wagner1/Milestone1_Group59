@@ -5,11 +5,11 @@
 
 ### Team members
 
-| Student No. | Full Name | GitHub Username | Contribution (sum to 100%) | 
-|-------------|-----------|-----------------|----------------------------|
-| s111111     | Full name | xxx             | 33.3% or Equal             |
-| s222222     | Full name | xxx             | 33.3% or Equal             | 
-| s333333     | Full name | xxx             | 33.3% or Equal             | 
+| Student No. | Full Name     | GitHub Username | Contribution (sum to 100%) | 
+|-------------|---------------|-----------------|----------------------------|
+| s111111     | Full name     | xxx             | 33.3% or Equal             |
+| s5384766    | Joshua Wagner | Josh-Wagner1    | 33.3% or Equal             | 
+| s333333     | Full name     | xxx             | 33.3% or Equal             | 
 
 ### Brief Description of Contribution
 
