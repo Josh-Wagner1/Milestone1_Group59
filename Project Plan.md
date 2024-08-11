@@ -1,13 +1,13 @@
 # Project Plan
 
-## Project Name: XXXX
-## Group Number: 001
+## Project Name: Nutrional Food - Assignment.
+## Group Number: 59
 
 ### Team members
 
 | Student No. | Full Name     | GitHub Username | Contribution (sum to 100%) | 
 |-------------|---------------|-----------------|----------------------------|
-| s111111     | Full name     | xxx             | 33.3% or Equal             |
+| s5280075    | Juan Martinez | juanjosemm2703  | 33.3% or Equal             |
 | s5384766    | Joshua Wagner | Josh-Wagner1    | 33.3% or Equal             | 
 | s333333     | Full name     | xxx             | 33.3% or Equal             | 
 
