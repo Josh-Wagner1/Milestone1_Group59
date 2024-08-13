@@ -47,21 +47,97 @@ Please Describe what you have accomplished in this group project.
 
 Establish objectives or goals that the project aims to achieve.
 
-### 1.2 Project Stakeholders
+* Food search, Nutrition breakdown, Nutrition Range filter and ???
+  * selecting multiple foods and displaying the combined nutritional information 
+  * having a calculator where you go input the weight of the food in grams and display the nutritional information.
+  * Retrieve specific nutritional stats from a food and determine the amount required for a meal/ daily intake
+The dataset includes specific features that your user interface must enable a user
+  * Easily interactable interface
+  * Reduce the number of steps to obtain the required information
+  * Data is clearly conveyed through both text and graphs.
+
+The data usable and applicable to the average user's dietry requirements.
+
+
+### 1.2 Project Stakeholders 
 
 Identify all key stakeholders involved in the project, including internal teams and potential end-users.
+
+Executive internal stakeholders:
+* Owner/ CEO of company
+
+Internal operational stakeholders:
+* Project managers
+* Programmer
+* User interface designer
+* Quality assurance
+* Cyber-security specialist
+
+External executive stakeholders:
+* Government bodies
+
+External operational stakeholders: [Ask Kevin]
+* Personal trainers
+* Teenagers/adults seeking a specialised diet
+* Doctors
+* Nutritianists
 
 ### 1.3 Project Scope
 
 Define and manage what is included or excluded in the project and product.
+Included:
+* All software requirements (list)
+* Data analysis
+* Usable GUI by all stakeholders
 
-## 2. Work Breakdown Structure
+Excluded:
+* Nutritional informmation beyond the nutritional food database
+* Mobile app development (exclusive to pc)
+* Cost/Benefit analysis - Assume unlimited budget and/or free access to users
+## 2. Work Breakdown Structure (Juan)
 
 Include the Work Breakdown Structure (WBS) for the entire project. WBS should be presented as a hierarchical diagram. Use the elements from the WBS to define activities in Section 3, and schedule these activities in the Gantt Chart in Section 4. Ensure all project activities are considered and included in the WBS.
+1 Initiating:
+* Assign roles in project
+* Set Objective
+* Identify stakeholders
+* Define project
+2 Project management plan:
+* WBS
+* Activity definitions
+* Gantt Chart
+3 Software design:
+* Define the system vision
+* Set software and user requirements
+* Use case diagram and use cases
+* Software design
+* User hierachy chart
+* Design wireframes and mockups
+4 Executing:
+* Setup program code
+* Implement Food search
+* Nutrition breakdown
+* Nutrition range filter
+* Nutrition level filter
+* ??? Additional feature
+* User interface implementation
+* API implementation
+5 Testing
+* (Unit testing/Functional testing) each of the main features of the application
+* (Integration testing) R interacts with the GUI
+* (End to end) User experience/use case testing.
+* Bug hunting
+* (Acceptence testing) Sending to client for approval/ internal testing
+* Performance/ optimisation
+6 Closing
+* Finalising documentation
+* Logging hours/time sheets
+* Final handover to client
+* Performance review and gitlog
 
 ![WBS](./WBS.jpg)
 
-## 3. Activity Definition Estimation
+## 3. Activity Definition Estimation (Josh)
 
 Define the activities required for your project based on the WBS, and assign responsibilities to team members. Each activity should be numbered and correspond with your Gantt chart. Provide estimated durations for each activity to facilitate Gantt chart preparation.
 
@@ -70,8 +146,19 @@ Define the activities required for your project based on the WBS, and assign res
 | xxx          | xxx           | xxx               | xxx      | xxx \& yyy               |
 | xxxx         | xxx           | xxx               | xxx      | All                      |
 | xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| xxxx         | xxx           | xxx               | xxx      | xxx                      |
 
-## 4. Gantt Chart
+## 4. Gantt Chart [Ask Kevin]
 You have to use the provided Gantt chart template.  
 
 Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 
