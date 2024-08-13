@@ -1,7 +1,7 @@
 # Software Design Document
 
-## Project Name: XXXX
-## Group Number: 001
+## Project Name: Nutrional Food - Assignment.
+## Group Number: 59
 
 ## Team members
 
@@ -9,7 +9,7 @@
 |----------------|---------------|
 | s5277614       | Gemma Manns   |
 | s5384766       | Joshua Wagner | 
-| s333333        | Full name     | 
+| s5280075       | Juan Martinez | 
 
 
 <div style="page-break-after: always;"></div>
