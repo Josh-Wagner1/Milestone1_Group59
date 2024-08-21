@@ -5,11 +5,11 @@
 
 ### Team members
 
-| Student No. | Full Name     | GitHub Username | Contribution (sum to 100%) | 
-|------|---------------|-----------------|----------------------------|
-| s5280075 | Juan Martinez | juanjosemm2703  | 33.3% or Equal             |
-| s5384766 | Joshua Wagner | Josh-Wagner1    | 33.3% or Equal             | 
-| s5277614     | Gemma Manns   | gemmamanns      | 33.3% or Equal             | 
+|Student No. |   Full Name   | GitHub Username | Contribution (sum to 100%) | 
+|------------|---------------|-----------------|----------------------------|
+| s5280075   | Juan Martinez | juanjosemm2703  | 33.3% or Equal             |
+| s5384766   | Joshua Wagner | Josh-Wagner1    | 33.3% or Equal             | 
+| s5277614   | Gemma Manns   | gemmamanns      | 33.3% or Equal             | 
 
 ### Brief Description of Contribution
 
@@ -133,46 +133,7 @@ Excluded:
 
 ## 2. Work Breakdown Structure (Juan)
 
-Include the Work Breakdown Structure (WBS) for the entire project. WBS should be presented as a hierarchical diagram. Use the elements from the WBS to define activities in Section 3, and schedule these activities in the Gantt Chart in Section 4. Ensure all project activities are considered and included in the WBS.
-1 Initiating:
-* Assign roles in project
-* Set Objective
-* Identify stakeholders
-* Define project
-2 Project management plan:
-* WBS
-* Activity definitions
-* Gantt Chart
-3 Software design:
-* Define the system vision
-* Set software and user requirements
-* Use case diagram and use cases
-* Software design
-* User hierachy chart
-* Design wireframes and mockups
-4 Executing:
-* Setup program code
-* Implement Food search
-* Nutrition breakdown
-* Nutrition range filter
-* Nutrition level filter
-* ??? Additional feature
-* User interface implementation
-* API implementation
-5 Testing
-* (Unit testing/Functional testing) each of the main features of the application
-* (Integration testing) R interacts with the GUI
-* (End to end) User experience/use case testing.
-* Bug hunting
-* (Acceptence testing) Sending to client for approval/ internal testing
-* Performance/ optimisation
-6 Closing
-* Finalising documentation
-* Logging hours/time sheets
-* Final handover to client
-* Performance review and gitlog
-
-![WBS](./WBS.jpg)
+![WBS](./WBS.png)
 
 ## 3. Activity Definition Estimation (Josh)
 
