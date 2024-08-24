@@ -248,10 +248,13 @@ Define the activities required for your project based on the WBS, and assign res
 
 
 ## 4. Gantt Chart (Gemma)
+
+![Gantt Chart](./Gantt_chart.png)
+
+Notes: 
 You have to use the provided Gantt chart template.  
 
 Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 
 and scheduling. Ensure that the Gantt chart reflects the activity definitions from Section 3. Track actual start 
 times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately.
-![Gantt Chart](./Gantt_chart.png)
 
