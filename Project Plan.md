@@ -119,6 +119,77 @@ External operational stakeholders:
 
 ### 1.3 Project Scope
 
+**Included:**
+
+1. **Software Requirements:**
+
+   - Development of a data analysis and visualisation tool for the Comprehensive Nutritional Food Database.
+   
+   - Desktop Application
+   
+   - Development of a graphical user interface that is accessible and usable.
+
+   - Software Code and all project resources hosted on private Github repository
+   
+   - Implementation of the following features:
+     - **Food Search**: Allows users to search for foods by name and display all related nutritional information from the database.
+     - **Nutrition Breakdown**: Provides visual representations, such as pie charts and bar graphs, of the nutrient composition (e.g., caloric value, fats, carbohydrates, proteins, vitamins, and minerals) for selected foods.
+     - **Nutrition Range Filter**: Enables users to filter foods based on selected nutrient ranges (e.g., fat content, protein, sugar, vitamins).
+     - **Nutrition Level Filter**: Allows users to filter foods by nutritional content levels—low, mid, and high—based on various nutrients like fat, protein, carbohydrates, and nutritional density.
+     - **Food Calculator** : Allows users to input a serving size of a food in grams and the Calculator displays the total nutrient composition of that serving. 
+     
+   - Security and data protection measures to ensure compliance with relevant standards.
+
+2. **Data Analysis:**
+   Accurate integration and processing of data from the Comprehensive Nutritional Food Database, covering a wide range of nutritional metrics, including:
+   - Caloric Value
+   - Fat( in g)
+   - Saturated Fats( in g)
+   - Monounsaturated Fats( in g)
+   - Polyunsaturated Fats( in g)
+   - Carbohydrates( in g)
+   - Sugars( in g)
+   - Protein( in g)
+   - Dietary Fiber( in g)
+   - Cholesterol( in mg)
+   - Sodium( in g)
+   - Water( in g) 
+   - Vitamin A( in mg)
+   - Vitamin B1 (Thiamine)( in mg)
+   - Vitamin B11 (Folic Acid)( in mg)
+   - Vitamin B12( in mg)
+   - Vitamin B2 (Riboflavin)( in mg)
+   - Vitamin B3 (Niacin)( in mg)
+   - Vitamin B5 (Pantothenic Acid)( in mg)
+   - Vitamin B6( in mg)
+   - Vitamin C( in mg)
+   - Vitamin D( in mg)
+   - Vitamin E( in mg)
+   - Vitamin K( in mg)
+   - Calcium( in mg)
+   - Copper( in mg)
+   - Iron( in mg)
+   - Magnesium( in mg)
+   - Manganese( in mg)
+   - Phosphorus( in mg)
+   - Potassium( in mg)
+   - Selenium( in mg)
+   - Zinc( in mg)
+   - Nutrition Density
+
+
+**Excluded:**
+
+1. **Nutritional Information Beyond the Nutritional Food Database:**
+   - The project will not include data or analysis for nutritional information outside the scope of the Comprehensive Nutritional Food Database.
+
+2. **Mobile App Development:**
+   - The tool will be developed exclusively for PC use, with no mobile application version planned.
+
+3. **Cost/Benefit Analysis:**
+   - There will be no cost/benefit analysis conducted. The project assumes an unlimited budget and/or free access for users.
+
+Notes: 
 Define and manage what is included or excluded in the project and product.
 Included:
 * All software requirements (list)
@@ -126,7 +197,7 @@ Included:
 * Usable GUI by all stakeholders
 
 Excluded:
-* Nutritional informmation beyond the nutritional food database
+* Nutritional information beyond the nutritional food database
 * Mobile app development (exclusive to pc)
 * Cost/Benefit analysis - Assume unlimited budget and/or free access to users
 
@@ -177,10 +248,13 @@ Define the activities required for your project based on the WBS, and assign res
 
 
 ## 4. Gantt Chart (Gemma)
+
+![Gantt Chart](./Gantt_chart.png)
+
+Notes: 
 You have to use the provided Gantt chart template.  
 
 Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 
 and scheduling. Ensure that the Gantt chart reflects the activity definitions from Section 3. Track actual start 
 times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately.
-![Gantt Chart](./Gantt_chart.png)
 
