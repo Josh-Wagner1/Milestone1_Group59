@@ -160,7 +160,7 @@ Define the activities required for your project based on the WBS, and assign res
 | 4.2.2        | Nutrition breakdown                   | Develop and integrate the nutrition breakdown feature.                                                        | 5        | Josh                     |
 | 4.2.3        | Nutrition range filter                | Develop and integrate the Nutrition range filter feature.                                                     | 5        | Juan                     |
 | 4.2.4        | Nutrition level filter                | Develop and integrate the nutrition filter feature.                                                           | 5        | Gemma                    |
-| 4.2.5        | Additional feature                    | Develop and integrate the planned additional feature.                                                         | 5        | Josh                     |
+| 4.2.5        | Weight calculation feature            | Develop and integrate the weight calculation feature.                                                         | 5        | Josh                     |
 | 4.3          | User interface implementation         | Integrate the planned UI to the functional components of the system.                                          | 5        | Juan                     |
 | 4.4          | API implementation                    | Setup API and make the final system be able to communicated to.                                               | 3        | All                      |
 | 5.1          | Unit and Functional testing           | Ensure all features of the application are in full working order with no system breaking issues.              | 3        | All                      |
@@ -176,7 +176,7 @@ Define the activities required for your project based on the WBS, and assign res
 
 
 
-## 4. Gantt Chart
+## 4. Gantt Chart (Gemma)
 You have to use the provided Gantt chart template.  
 
 Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 

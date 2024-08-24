@@ -19,15 +19,19 @@
 # Table of Contents
 
 <!-- TOC -->
+* [Software Design Document](#software-design-document)
+  * [Project Name: Nutrional Food - Assignment.](#project-name-nutrional-food---assignment)
+  * [Group Number: 59](#group-number-59)
+  * [Team members](#team-members)
 * [Table of Contents](#table-of-contents)
   * [1. System Vision](#1-system-vision)
     * [1.1 Problem Background](#11-problem-background)
     * [1.2 System capabilities/overview](#12-system-capabilitiesoverview)
-    * [1.3	Potential Benefits](#13potential-benefits)
+    * [1.3	Benefit Analysis](#13benefit-analysis)
   * [2. Requirements](#2-requirements)
     * [2.1 User Requirements](#21-user-requirements)
     * [2.2	Software Requirements](#22software-requirements)
-    * [2.3 Use Case Diagrams](#23-use-case-diagrams)
+    * [2.3 Use Case Diagram](#23-use-case-diagram)
     * [2.4 Use Cases](#24-use-cases)
   * [3.	Software Design and System Components](#3-software-design-and-system-components-)
     * [3.1	Software Design](#31software-design)
@@ -45,7 +49,7 @@
 
 
 
-## 1. System Vision
+## 1. System Vision (Gemma)
 
 ### 1.1 Problem Background
 
@@ -63,7 +67,7 @@
 
 How will this system provide value or benefit?
 
-## 2. Requirements
+## 2. Requirements (Josh)
 
 ### 2.1 User Requirements
 
