@@ -84,13 +84,8 @@ The development of the data analysis and visualisation tool for the Comprehensiv
 #### External Stakeholders: 
 
 * Government Bodies: May provide guidelines or regulations regarding nutritional data representation and user privacy.
-* End Users, which may include: 
-  * Sports Professionals;
-  * People with dietary requirements or restrictions;
-  * Doctors;
-  * Nutritionists;
-  * Dietitians; and
-  * Health-Conscious Consumers. 
+* End Users
+
 
 Notes: 
 Identify all key stakeholders involved in the project, including internal teams and potential end-users.
@@ -138,7 +133,6 @@ External operational stakeholders:
      - **Nutrition Level Filter**: Allows users to filter foods by nutritional content levels—low, mid, and high—based on various nutrients like fat, protein, carbohydrates, and nutritional density.
      - **Food Calculator** : Allows users to input a serving size of a food in grams and the Calculator displays the total nutrient composition of that serving. 
      
-   - Security and data protection measures to ensure compliance with relevant standards.
 
 2. **Data Analysis:**
    Accurate integration and processing of data from the Comprehensive Nutritional Food Database, covering a wide range of nutritional metrics, including:
@@ -180,14 +174,14 @@ External operational stakeholders:
 
 **Excluded:**
 
-1. **Nutritional Information Beyond the Nutritional Food Database:**
    - The project will not include data or analysis for nutritional information outside the scope of the Comprehensive Nutritional Food Database.
 
-2. **Mobile App Development:**
    - The tool will be developed exclusively for PC use, with no mobile application version planned.
 
-3. **Cost/Benefit Analysis:**
    - There will be no cost/benefit analysis conducted. The project assumes an unlimited budget and/or free access for users.
+
+   - Security and data protection measures to ensure compliance with relevant standards.
+
 
 Notes: 
 Define and manage what is included or excluded in the project and product.
