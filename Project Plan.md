@@ -84,13 +84,8 @@ The development of the data analysis and visualisation tool for the Comprehensiv
 #### External Stakeholders: 
 
 * Government Bodies: May provide guidelines or regulations regarding nutritional data representation and user privacy.
-* End Users, which may include: 
-  * Sports Professionals;
-  * People with dietary requirements or restrictions;
-  * Doctors;
-  * Nutritionists;
-  * Dietitians; and
-  * Health-Conscious Consumers. 
+* End Users
+
 
 Notes: 
 Identify all key stakeholders involved in the project, including internal teams and potential end-users.
