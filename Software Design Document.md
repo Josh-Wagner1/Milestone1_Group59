@@ -110,7 +110,7 @@ Include at least 5 use cases, each corresponding to a specific function.
 Include a flowchart that illustrates how your software will operate.
 
 Example:  
-![Software Design](./software_design_flowchart.png)
+![Software Design](./FlowChart.png)
 
 ### 3.2	System Components
 
