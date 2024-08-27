@@ -1,6 +1,6 @@
 # Software Design Document
 
-## Project Name: Nutrional Food - Assignment.
+## Project Name: Nutritional Food - Assignment.
 ## Group Number: 59
 
 ## Team members
@@ -19,15 +19,19 @@
 # Table of Contents
 
 <!-- TOC -->
+* [Software Design Document](#software-design-document)
+  * [Project Name: Nutritional Food - Assignment.](#project-name-nutritional-food---assignment)
+  * [Group Number: 59](#group-number-59)
+  * [Team members](#team-members)
 * [Table of Contents](#table-of-contents)
   * [1. System Vision](#1-system-vision)
     * [1.1 Problem Background](#11-problem-background)
     * [1.2 System capabilities/overview](#12-system-capabilitiesoverview)
-    * [1.3	Potential Benefits](#13potential-benefits)
+    * [1.3	Benefit Analysis](#13benefit-analysis)
   * [2. Requirements](#2-requirements)
     * [2.1 User Requirements](#21-user-requirements)
     * [2.2	Software Requirements](#22software-requirements)
-    * [2.3 Use Case Diagrams](#23-use-case-diagrams)
+    * [2.3 Use Case Diagram](#23-use-case-diagram)
     * [2.4 Use Cases](#24-use-cases)
   * [3.	Software Design and System Components](#3-software-design-and-system-components-)
     * [3.1	Software Design](#31software-design)
@@ -45,14 +49,37 @@
 
 
 
-## 1. System Vision
+## 1. System Vision (Gemma)
 
 ### 1.1 Problem Background
 
-- Problem Identification: What problem does this system solve?
-- Dataset: What is the dataset used?
-- Data Input/Output: What kind of data input and output is required?
-- Target Users: Who will use the system, and why?
+#### Problem Identification: What problem does this system solve?
+
+The system addresses the challenge of accessing and understanding detailed nutritional information for a wide range of food items. Many individuals, healthcare professionals, and dietitians struggle to find reliable and comprehensive nutritional data in a user-friendly format. This tool solves the problem by providing a centralised platform where users can easily search for foods, analyse their nutritional content, and make informed dietary decisions. It facilitates personalised diet planning, supports health and medical research, and helps users manage specific dietary requirements or restrictions.
+
+#### Dataset: What is the dataset used?
+
+The dataset used is a CSV file named Nutritional_Food_Database.csv. This database contains detailed nutritional information for various food items commonly consumed around the world. It includes columns that describe food names and their nutritional content, such as caloric value, fat types, carbohydrates, proteins, vitamins, minerals, and more. The dataset is essential for supporting a wide range of dietary, health, and medical research applications.
+
+#### Data Input/Output: What kind of data input and output is required?
+**Data Input:**
+- **Text Input:** Users will input text strings when searching for specific food items by name or when selecting nutrients to filter by range or level.
+- **Numerical Input:** Users may enter numerical values to set minimum and maximum ranges for specific nutrients, such as calories, fat, or protein content.
+- **Selection Input:** Users will use selection inputs, such as drop-down menus or checkboxes, to choose specific nutrients or categories of nutrients for analysis and filtering.
+
+**Data Output:**
+- **Textual Output:** The system will display lists of food items along with their corresponding nutritional information based on user searches and filters.
+- **Graphical Output:** The tool will generate visual representations, such as pie charts and bar graphs, to illustrate the nutritional breakdown of selected food items. These visuals will help users easily interpret the data and make informed decisions.
+- **Filtered Results:** The system will provide filtered lists of foods that meet the criteria set by the user, such as foods within a certain caloric range or with a specific nutrient level.
+
+#### Target Users: Who will use the system, and why?
+
+- **Sports Professionals**: Use the tool to optimise dietary plans for athletes by selecting foods that meet specific nutritional needs, such as high protein or low fat.
+- **People with Dietary Requirements or Restrictions**: Individuals with allergies, medical conditions, or personal dietary preferences can use the system to find foods that align with their specific nutritional requirements.
+Doctors: Utilise the tool to recommend and plan dietary interventions for patients with specific health conditions, such as diabetes, cardiovascular issues, or obesity.
+- **Nutritionists**: Use the system to create balanced diet plans for clients, ensuring that all nutritional needs are met based on detailed food data.
+- **Dietitians**: Provide expert advice and feedback on food choices, using the tool to support patient dietary management and to educate clients on healthy eating.
+- **Health-Conscious Consumers**: Individuals looking to make informed decisions about their food choices can use the tool to understand the nutritional content of the foods they consume and to plan meals that support their health goals.
 
 ### 1.2 System capabilities/overview
 
@@ -63,7 +90,7 @@
 
 How will this system provide value or benefit?
 
-## 2. Requirements
+## 2. Requirements (Josh)
 
 ### 2.1 User Requirements
 
@@ -106,7 +133,7 @@ Include at least 5 use cases, each corresponding to a specific function.
 Include a flowchart that illustrates how your software will operate.
 
 Example:  
-![Software Design](./software_design_flowchart.png)
+![Software Design](./FlowChart.png)
 
 ### 3.2	System Components
 
