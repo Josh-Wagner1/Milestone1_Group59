@@ -83,12 +83,38 @@ Doctors: Utilise the tool to recommend and plan dietary interventions for patien
 
 ### 1.2 System capabilities/overview
 
-- System Functionality: What will the system do?
-- Features and Functionalities: Describe the key features and functionalities of the system.
+The System will do the following:
+
+- Display results from the following searches of the Database:
+  - Food Search - Text search names for specific entries. 
+  - Nutrition Range Filter - Filter entries by nutrition values
+  - Nutrition Level Filter - Filter entries by nutritional content levels. 
+- Display the nutritional breakdown of entries when selected by the end user, in both numerical and graphical form.  
+- View Changelog
+
 
 ### 1.3	Benefit Analysis
 
-How will this system provide value or benefit?
+The Nutritional Food Analysis System provides significant value across various user groups, contributing to better dietary decisions, improved health outcomes, and enhanced professional practice. The benefits of the system include:
+
+**Enhanced Dietary Planning:**
+  - Personalised Diets: The system enables users to tailor their diets based on specific nutritional needs, whether for weight management, athletic performance, or medical conditions. By providing detailed nutritional information and filtering options, users can easily find foods that align with their dietary goals.
+  - Accurate Nutritional Calculations: The weight-based nutritional calculator allows users to scale the nutritional content of food items, ensuring precise portion control and more accurate dietary planning.
+
+**Improved Health Outcomes:**
+  - Informed Food Choices: By offering detailed and reliable nutritional data, the system empowers users to make informed food choices that support their health objectives. This is particularly beneficial for individuals managing conditions like diabetes, cardiovascular diseases, or obesity.
+  - Support for Health Professionals: Nutritionists, dietitians, and doctors can use the system to develop and recommend scientifically-backed dietary plans, enhancing patient care and dietary interventions.
+
+**Educational Value:**
+  - Nutritional Awareness: The system’s visual representation tools, such as pie charts and bar graphs, make it easier for users to understand the nutritional content of foods. This helps in educating users about balanced diets and the impact of different nutrients on health.
+  - Accessible Information: The user-friendly interface and comprehensive database make nutritional information accessible to a wide audience, from health-conscious consumers to professionals in the healthcare industry.
+
+**Time Efficiency:**
+  - Quick Food Searches: The advanced search and filtering capabilities allow users to quickly find and analyse food items, saving time compared to traditional methods of dietary research.
+  - Streamlined Professional Use: For professionals like nutritionists and dietitians, the system streamlines the process of dietary analysis and planning, allowing them to focus more on client interaction and less on manual data processing.
+
+**Comprehensive Data Access:**
+  - Centralised Nutritional Information: The system acts as a central repository for detailed nutritional data, reducing the need to consult multiple sources and ensuring consistency in the information provided.
 
 ## 2. Requirements (Josh)
 
