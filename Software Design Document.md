@@ -169,7 +169,7 @@ While the System is the sole user that interacts with the program to provide the
 * R3.1 The Nutrition Breakdown function shall show pie charts and bar graphs displaying the nutritional breakdown of the selected food. 
 * R4.1 The Nutrition Range Filter shall accept a string value to determine the nutrition being range limited.
 * R4.2 The Nutrition Range Filter shall accept floating point values to constrain the minimum and maximum value of a specific nutrition that show up in the results.
-* R5.1 The Nutrition Level Filter shall provide a dropdown value to filter their search results based on nutritional density which includes “LOW”, “MEDIUM” and “HIGH” as selectable values or “NONE” as a placeholder if undecided.
+* R5.1 The Nutrition Level Filter shall provide a dropdown value to filter their search results based on nutritional density which includes “Low”, “Mid” and “High” as selectable values or “NONE” as a placeholder if undecided.
 * R6.1 The Weight calculator feature shall give the option for the user to input a food item in plaintext along with a numerical weight (in grams) in which they can scale the other nutritional values with.
 * R6.2 The Weight calculator shall provide a list of scaled nutritional values based on the inputted food and weight. 
 
@@ -262,22 +262,253 @@ While the System is the sole user that interacts with the program to provide the
 ### 3.2	System Components
 
 #### 3.2.1 Functions
-List all key functions within the software. For each function, provide:
-- Description: Brief explanation of the function’s purpose.
-- Input Parameters: List parameters, their data types, and their use.
-- Return Value: Describe what the function returns.
-- Side Effects: Note any side effects, such as changes to global variables or data passed by reference.
+**ReadLines**
+* Description: Read all lines of the Food_Nutrition_Dataset.csv and store it as an array.
+* Input Parameters: 
+  * Food_Nutrition_Dataset.csv
+* Return Value: CSV_Arr[][] --> A 2D array containing all the records of the Food_Nutrition_Dataset.csv.
+* Side Effects: Data has to be re-initiated if the software is re-openned.
+
+**Search_All_Foods**
+* Description: Search all rows in the csv and retrieve the ones where the “food” element matches all or part of the user’s string input.  
+* Input Parameters: 
+  * User_Food_Input --> A string that stores the raw user input from the search bar.
+* Return Value: Food_Arr[][] --> A 2D array containing all the records that match or contain the string in User_Food_Input
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
+**Search_Single_Food**
+* Description: The user selects a food in which the system retrieves its nutritional information of. Its used to create pie charts and bar graphs for the Nutrition_Breakdown feature and calculations for the Weight_Calculator.
+* Input Parameters: 
+	* User_Food_Input --> A string that stores the raw user input.
+* Return Value: SFood_Arr[] --> A 1D array containing all the entities that belong to the food specified User_Food_Input but this is displayed visually with pie charts and bar graphs.
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
+**Nutrition_Breakdown**
+* Description: The user selects a food in which the system calls the Retrieve_Single_Food to retrieve its details and create pie charts and bar graphs for the user to view.
+* Input Parameters: 
+  * User_Food_Input --> A string that stores the raw user input from the text box. Used to generate SFood_Arr[] by calling Retrieve_Single_Food.
+* Return Value: SFood_Arr[] displayed visually with pie charts and bar graphs.
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
+**Weight_Calculator**
+* Description: The user inputs the name of a food and weight (in g) of the desired portion for the system to calculate and display scaled nutritional information.
+* Input Parameters: 
+* User_Food_Input --> A string that stores the raw user input from the text box. Used to generate SFood_Arr[] by calling Retrieve_Single_Food.
+	* User_Weight_Input --> A floating point value that stores the user input for the weight.
+* Return Value: Calc_Food_Arr[] --> A 1D array containing all the entities that belong to the food specified User_Food_Input and has been scaled based on User_Weight_Input.
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
+**Nutrition_Level_Filter**
+* Description: Filter all rows of the csv to only show rows that contain a specific weight range (density) of a nutrient that the user has defined.
+* Input Parameters: 
+	* User_Nutrient_Input --> A string that stores the user’s selected nutrient.
+	* User_Nutrient_Level --> A string that stores the specified nutrient level (Low, Mid or High).
+* Return Value: Food_Arr[][] --> A 2D array containing all the records that meet the User_Nutrient_Level of the specified User_Nutrient_Input.
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
+**Nutrition_Range_Filter**
+* Description: Filter all rows of the csv to only show rows that contain a specific level of a nutrient that the user has defined.
+* Input Parameters: 
+  * User_Nutrient_Input --> A string that stores the user’s selected nutrient.
+  * User_Nutrient_Min --> A floating point value that stores the lower bound of the user’s specified range.
+  * User_Nutrient_Max --> A floating point value that stores the upper bound of the user’s specified range.
+* Return Value: Food_Arr[][] --> A 2D array containing all the records that are within the range of User_Nutrient_Min and User_Nutrient_Max of the specified User_Nutrient_Input.
+* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+
 
 #### 3.2.2 Data Structures / Data Sources
-List all data structures or sources used in the software. For each, provide:
+**Line**
+* Type: String
+* Usage: Stores the next line of csv data that needs to be read and stored in CSV_Arr[][].
+* Functions: ReadLines
 
-- Type: Type of data structure (e.g., list, set, dictionary).
-- Usage: Describe where and how it is used.
-- Functions: List functions that utilize this structure.
+**CSV_Arr[][]**
+* Type: 2D array
+* Usage: A 2D array used to store the contents of the aforementioned Food_Nutrition_Dataset.csv.
+* Functions: All except for Weight_Calculator.
+
+**“i”, “j”**
+* Type: int
+* Usage: Ints used to represent positions in 1D and 2D arrays.
+* Functions: All except for Weight_Calculator.
+
+**User_Food_Input**
+* Type: String
+* Usage: Stores the raw user input of a food item from an editable textbox that is used to define the “food”(s) they want to retrieve and view from the csv.
+* Functions: Search_All_Foods, Search_Single_Food and Weight_Calculator.
+
+**User_Nutrient_Input**
+* Type: String
+* Usage: Functions identically to User_Food_Input but it’s designed to store single nutrient type instead of a “food” that the user wants to filter their results by.
+* Functions: Nutrition_Level_Filter and Nutrition_Range_Filter.
+
+**User_Weight_Input**
+* Type: Floating point
+* Usage: Used to store the user defined weight that they want to scale the nutritional information by.
+* Functions: Weight_Calculator
+
+**User_Nutrient_Level**
+* Type: String
+* Usage: Stores the user’s desired “level” of a specific nutrient as “Low”, “Mid” or “High”. It is used by the function to filters through all items in the csv to only show results that match the desired “level”.
+* Functions: Nutrition_Level_Filter
+
+**User_Nutrient_Min**
+* Type: Floating point
+* Usage: Stores the absolute minimum nutritional value that the user specifies for a specific nutrient. Is used to filter out any food from the results that has the defined nutrient’s value below the min.
+* Functions: Nutrition_Range_Filter
+
+**User_Nutrient_Max**
+* Type: Floating point
+* Usage: Identical to User_Nutrient_Min but is used to define the maximum instead of the minimum and it’s used to filter out any food from the results that has the defined nutrient’s value above the max.
+* Functions: Nutrition_Range_Filter
+
+**SFood_Arr[]**
+* Type: 1D array
+* Usage: Same as Food_Arr[][] but is designed to only store 1 row of data because it is used in functions that only work with one specific “food” rather than a list of them. 
+* Functions: Search_Single_Food and Weight_Calculator.
+
+**Calc_Food_Arr[]**
+* Type: 1D array
+* Usage: Intends to build on Food_Arr[] by storing the results of the Weight_Calculator after the contents of Food_Arr[] have been scaled using User_Weight_Input.
+* Functions: Weight_Calculator
+
+**Food_Arr[][]**
+* Type: 2D Array
+* Usage: It stores the catalogue of results that match the user’s query that is listed on the user interface when the search has been completed.
+* Functions: Search_All_Foods, Nutrition_Level_Filter and Nutrition_Range_Filter.
+
 
 #### 3.2.3 Detailed Design
-Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function.
+**ReadLines**
 
+START\
+Open Food_Nutrition_Dataset.csv for reading\
+Initialise array CSV_Arr[][]\
+For each Line in Food_Nutrition_Dataset.csv\
+&nbsp;&nbsp;&nbsp;&nbsp;Line = Read line of “Food_Nutrition_Dataset.csv”\
+&nbsp;&nbsp;&nbsp;&nbsp;Split Line by comma delimiter\
+&nbsp;&nbsp;&nbsp;&nbsp;Insert line into one line of CSV_Arr[][]\
+End For\
+Close Food_Nutrition_Dataset.csv\
+Return CSV_Arr[][]\
+END
+
+\
+**Search_All_Foods**
+
+START\
+Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
+Initialise string User_Food_Input = system.readtextinput()\
+Initialise array Food_Arr[][]\
+Initialise int i = 0\
+For each index i from 0 to CSV_Arr[][].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
+End For\
+Return Food_Arr[][]\
+END
+
+\
+**Search_Single_Food**
+
+START\
+Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
+initialise string User_Food_Input = system.readtextinput()\
+Initialise array SFood_Arr[]\
+Initialise int i = 0\
+For each index i from 0 to CSV_Arr[][].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to SFood_Arr[]\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Return SFood_Arr[]\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
+End For\
+Return -1\
+END
+
+
+\
+**Nutrition_Breakdown**
+
+START\
+initialise string User_Food_Input = system.readtextinput()\
+initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
+initialise int i = 0\
+For each index i from 0 to SFood_Arr[].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] to visible table\
+&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to pie chat\
+&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to bar graph\
+End For\
+Return pie chart, bar graph\
+END
+
+\
+**Weight_Calculator**
+
+START
+initialise string User_Food_Input = system.readtextinput()\
+initialise float User_Weight_Input = float(system.readtextinput())\
+initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
+initialise array Calc_Food_Arr[]\
+initialise int i = 0\
+For each index i from 0 to SFood_Arr[].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;Calc_Food_Arr[i] = SFood_Arr[i] * (User_Weight_Input /100)\
+End For\
+Return Calc_Food_Arr[]\
+END
+
+\
+**Nutrition_Level_Filter**
+
+START
+Initialise CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
+initialise string User_Nutrient_Input = system.readtextinput()\
+initialise string User_Nutrient_Level = system.readtextinput()\
+initialise array Food_Arr[][]\
+initialise int i = 0\
+initialise int j = 0\
+While global.CSV_Arr[0][j] is not NULL\
+&nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;j += 1\
+End While\
+For each index i from 0 to CSV_Arr[][].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] meets level of User_Nutrient_Level\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
+End For\
+Return Food_Arr[][]\
+END
+
+\
+**Nutrition_Range_Filter**
+
+START
+Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
+initialise float User_Nutrient_Input = system.readtextinput()\
+initialise float User_Nutrient_Min = float(system.readtextinput())\
+initialise float User_Nutrient_Max = float(system.readtextinput())\
+initialise array Food_Arr[][]\
+initialise int i = 0\
+initialise int j = 0\
+While global.CSV_Arr[0][j] is not NULL\
+&nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;j += 1\
+End While\
+For each index i from 0 to CSV_Arr[][].RowCount() – 1\
+&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] is greater than User_Nutrient_Min and less than User_Nutrient_Max\
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
+&nbsp;&nbsp;&nbsp;&nbsp;End If\
+&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
+End For\
+Return Food_Arr[][]\
+END
 
 ## 4. User Interface Design
 
