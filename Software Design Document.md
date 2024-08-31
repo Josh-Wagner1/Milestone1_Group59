@@ -513,14 +513,67 @@ END
 ## 4. User Interface Design
 
 ### 4.1 Structural Design
-Present a structural design, a hierarchy chart, showing the overall interface’s structure. Address:
 
-- Structure: How will the software be structured?
-- Information Grouping: How will information be organized?
-- Navigation: How will users navigate through the software?
-- Design Choices: Explain why these design choices were made.
+**Structure: How will the software be structured?**
 
-Example:  
+The software is structured in a modular fashion, with each primary feature represented as a distinct module linked from the Home Page. This modular approach ensures that each feature is self-contained, simplifying maintenance, updates, and scalability.
+
+- **Home Page:** Serves as the central hub, directing users to the core features.
+- **Food Search:** Allows users to search for food items and view detailed nutritional information.
+- **Nutrition Breakdown:** Provides visual representations (charts/graphs) of the nutritional content of selected foods.
+- **Nutrition Range Filter:** Enables users to filter foods by specific nutrient ranges.
+- **Nutrition Level Filter:** Allows users to filter foods by predefined nutritional levels (low, mid, high).
+- **Weight Calculator:** Allows users to search for a food and input a weight to see the nutrient breakdown for that serving size.
+
+**Information Grouping: How will information be organized?**
+
+Information is organised into logical groups based on functionality:
+
+**Search & Retrival** 
+- Food Search: Users can enter a food name to retrieve its detailed nutritional profile.
+
+**Visualisation:**
+- Nutrition Breakdown: Users can view visual breakdowns of nutrients for a selected food.
+
+**Filtering:**
+- Nutrition Range Filter: Users can set nutrient ranges to filter foods.
+- Nutrition Level Filter: Users can filter foods based on predefined nutrient levels.
+
+**Nutrient Calculation:**
+- Weight Calculator: Users can input a food item and specify a weight in grams to view the nutrient breakdown for that serving size. Retrieval:
+
+**Navigation: How will users navigate through the software?**
+
+<ins>Home Page as Central Hub:</ins>
+
+Users begin at the Home Page, which provides links to all primary modules.
+A consistent navigation bar at the top of the interface ensures that users can easily switch between modules or exit the application.
+
+<ins>Navigation Flow:</ins> 
+
+Home Page → Food Search: Enter food names and view detailed profiles.
+Home Page → Nutrition Breakdown: Select a food to view its nutritional breakdown in various visual formats.
+Home Page → Nutrition Range amd Level Filter: Set ranges for specific nutrients and view filtered results and select nutrient levels and view foods that match.
+Home Page → Weight Calculator: Search for a food, input a weight in grams, and view the nutrient breakdown for that specific serving size.
+
+**Design Choices: Explain why these design choices were made.**
+
+<ins>Modularity:</ins> 
+
+Justification: The modular structure simplifies the tool’s design, making it easier to update or expand specific features without affecting the entire system. Each module is self-contained and focused, ensuring that users can complete tasks efficiently.
+
+<ins>User-Centric Design:</ins>
+
+Justification: The structure is intuitive, with clear entry points for each function. This design choice prioritises ease of use, allowing users to accomplish their goals with minimal navigation or confusion.
+
+<ins>Consistent Navigation:</ins>
+
+Justification: A consistent navigation bar provides users with a sense of orientation within the tool, reducing cognitive load and preventing them from getting lost. Quick access to the Home Page or other modules ensures that users can move through the tool fluidly.
+
+<ins>Visual Hierarchy:</ins>
+
+Justification: The organisation of information into distinct groups based on functionality (Search & Retrieval, Visualisation, Filtering, Nutrient Calculation) allows users to quickly identify where to go for specific tasks. This reduces the time spent searching for features and improves overall usability.
+
 ![Structural Design](./Structural_Design.png)
 
 ### 4.2	Visual Design
