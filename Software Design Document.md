@@ -174,11 +174,11 @@ While the System is the sole user that interacts with the program to provide the
 * R6.2 The Weight calculator shall provide a list of scaled nutritional values based on the inputted food and weight. 
 
 #### Non-Functional requirements: 
-* R1.1 User Interface is clean and easy to navigate.
-* R2.1 Widget layout is consistent both in size and position.
-* R3.1 Widgets follow the same layout/sizing practices of other applications.
-* R4.1 List of values is properly aligned with associated nutrition column names.
-* R5.1 Buttons and navigational widgets transfer to the correct Frame/ function when interacted with.
+* R1.1 User Interface shall be clean and easy to navigate.
+* R2.1 Widget layout shall be consistent both in size and position.
+* R3.1 Widgets shall follow the same layout/sizing practices of other applications.
+* R4.1 List of values shall be properly aligned with associated nutrition column names.
+* R5.1 Buttons and navigational widgets shall transfer to the correct Frame/ function when interacted with.
 
 ### 2.3 Use Case Diagram
 
@@ -317,6 +317,11 @@ While the System is the sole user that interacts with the program to provide the
 
 
 #### 3.2.2 Data Structures / Data Sources
+**Food_Nutrition_Dataset.csv**
+* Type: csv file
+* Usage: Contains all the data in comma delimited format.
+* Functions: All except for Weight_Calculator.
+
 **Line**
 * Type: String
 * Usage: Stores the next line of csv data that needs to be read and stored in CSV_Arr[][].
@@ -383,12 +388,14 @@ While the System is the sole user that interacts with the program to provide the
 
 START\
 Open Food_Nutrition_Dataset.csv for reading\
-Initialise array CSV_Arr[][]\
+Initialise array CSV_Arr[][]
+
 For each Line in Food_Nutrition_Dataset.csv\
 &nbsp;&nbsp;&nbsp;&nbsp;Line = Read line of “Food_Nutrition_Dataset.csv”\
 &nbsp;&nbsp;&nbsp;&nbsp;Split Line by comma delimiter\
 &nbsp;&nbsp;&nbsp;&nbsp;Insert line into one line of CSV_Arr[][]\
-End For\
+End For
+
 Close Food_Nutrition_Dataset.csv\
 Return CSV_Arr[][]\
 END
@@ -400,13 +407,15 @@ START\
 Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
 Initialise string User_Food_Input = system.readtextinput()\
 Initialise array Food_Arr[][]\
-Initialise int i = 0\
+Initialise int i = 0
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 
@@ -417,14 +426,16 @@ START\
 Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
 initialise string User_Food_Input = system.readtextinput()\
 Initialise array SFood_Arr[]\
-Initialise int i = 0\
+Initialise int i = 0
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to SFood_Arr[]\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Return SFood_Arr[]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return -1\
 END
 
@@ -435,12 +446,14 @@ END
 START\
 initialise string User_Food_Input = system.readtextinput()\
 initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
-initialise int i = 0\
+initialise int i = 0
+
 For each index i from 0 to SFood_Arr[].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] to visible table\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to pie chat\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to bar graph\
-End For\
+End For
+
 Return pie chart, bar graph\
 END
 
@@ -452,10 +465,12 @@ initialise string User_Food_Input = system.readtextinput()\
 initialise float User_Weight_Input = float(system.readtextinput())\
 initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
 initialise array Calc_Food_Arr[]\
-initialise int i = 0\
+initialise int i = 0
+
 For each index i from 0 to SFood_Arr[].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;Calc_Food_Arr[i] = SFood_Arr[i] * (User_Weight_Input /100)\
-End For\
+End For
+
 Return Calc_Food_Arr[]\
 END
 
@@ -468,19 +483,22 @@ initialise string User_Nutrient_Input = system.readtextinput()\
 initialise string User_Nutrient_Level = system.readtextinput()\
 initialise array Food_Arr[][]\
 initialise int i = 0\
-initialise int j = 0\
+initialise int j = 0
+
 While global.CSV_Arr[0][j] is not NULL\
 &nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;j += 1\
-End While\
+End While
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] meets level of User_Nutrient_Level\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 
@@ -494,7 +512,8 @@ initialise float User_Nutrient_Min = float(system.readtextinput())\
 initialise float User_Nutrient_Max = float(system.readtextinput())\
 initialise array Food_Arr[][]\
 initialise int i = 0\
-initialise int j = 0\
+initialise int j = 0
+
 While global.CSV_Arr[0][j] is not NULL\
 &nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
@@ -506,7 +525,8 @@ For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 

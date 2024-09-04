@@ -1,6 +1,6 @@
 # Project Plan
 
-## Project Name: Nutrional Food - Assignment.
+## Project Name: Nutritional Food - Assignment.
 ## Group Number: 59
 
 ### Team members
