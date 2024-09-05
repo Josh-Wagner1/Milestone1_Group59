@@ -119,45 +119,18 @@ The Nutritional Food Analysis System provides significant value across various u
 ## 2. Requirements (Josh)
 
 ### 2.1 User Requirements
-#### End users:
-We have listed a fair few end users that could potentially use the product, however “Nutritionist” (or other health professional) and “Health-conscious consumers” are the users that are most likely to fully interact with the program.
 
-**Nutritionist:**
+A frequent user of the software is a **Nutritionist**.
+A Nutritionist is a person that advises their clients on their diet and how it impacts their health so its critical they know the right foods to recommend. On behalf of their clients, Nutritionists need to gather a collection of foods that they can recommend to their client so they will often use most or all features of the software during a singular session to gather the desired foods. The nutritionist has their own needs for each feature and how they present the results to their queries.
+1.	The **Food Search** must accept a text input and return all applicable foods and their nutritional values on a scrollable table that match or contain the search query.
 
-A Nutritionist is an example of a user that may use the program to find a wide variety of foods/ food combinations on behalf of a that meets their dietary needs. To this this primarily do searches across the database primarily using nutrition range and nutrition level filters rather than specific searches with text. They may also use the food calculator so they can correctly portion these foods (and their nutritional levels) for their specified client.
+2.	The **Nutritional Breakdown** will give the nutritionist the option to input a food as text and the software visualises the nutrient composition of the selected food on a pie chart and a bar graph.
 
-**Nutritionist user needs:**
-* An easily accessible search function built for bulk searches.
-* Is correct and consistent with its data.
-* Filters that are relevant to what they need (Calorific value, Protein, Fat, Carbs, Sodium) while also giving the option for more niche filters for specific searches (like vitamins and minerals).
-* A calculation feature that can reliably and accurately scale the nutritional stats of an item based on its weight.
+3.	The **Nutritional Range** allows the nutritionist to select a nutrient type they want to filter and specify a minimum and maximum value (in g) that they want the results to fall within. When the search button is pressed, the nutritionist expects that the software will display all applicable foods and their nutritional details on a scrollable table.
 
-**Health-Conscious Consumers:**
+4.	The **Nutritional Level** allows the nutritionist to select a nutrient type they want to select and a specific nutrient level (Low, Mid or High) compared to the highest value on the database. When the search button is pressed, the nutritionist expects that the software will display all applicable foods and their nutritional details on a scrollable table.
 
-While health-conscious consumers might be more concerned with the specific details of a single food. E.g. they want to know the nutritional benefits of pulled pork for a dinner the following night. They will do this by inputting text into the search bar to look for the stated food. Another such example is a consumer looking up a specific cheese only to find it has too much saturated fat or is lacking another type of nutritional value. So, they do a general search of for “cheese” with a limit of 5g of fat on fat to find some alternate options.
-
-**Health-conscious consumer needs:**
-* Search feature can help pinpoint a specific food.
-* Search text and filters can help find a range of foods that can are useful for their diet.
-* UI is simple and easy to navigate and complete a search within seconds.
-
-#### Operational users:
-Like the end users there are a fair few operational users but the main ones that directly interact with the end user are the “Database Administrator” and the “System” itself. Taking from the perspective of the end user both these user’s serve different roles:
-
-**Database Administrator**
-The Database Administrator plays a simple role of providing downloadable updates to the database/ program in case it goes out of date or needs maintenance. Their only direct interaction with the client is the popup and changelog of what has been modified. 
-
-**Database administrator needs:**
-* Easily accessible UI to update the data.
-* A way to log changes through a change-log field.
-
-**System:**
-While the System is the sole user that interacts with the program to provide the main services. With every food search (along with applied filters) the system will return the appropriate result(s) for the search. When the user selects a food item, the system will also display a page with the relevant pie charts and bar graphs on its nutritional breakdown. The final task for the system to calculate the nutritional information on based on a food item and weight set by the user.
-
-**System user needs:**
-* Full access to the stored data instance for reading purposes.
-* A compute module for the functionality of the Food Calculator function.
-* To be regularly updated if there is a change to the stored information.
+5.	The **Weight Calculator** Allows the nutritionist to input a food as text and a desired weight to scale to. Then the Nutritionist expects the system to visualise the scaled nutritional values on a table and bar graph. 
 
 
 ### 2.2	Software Requirements
