@@ -570,14 +570,84 @@ Justification: The organisation of information into distinct groups based on fun
 ![Structural Design](./Structural_Design.png)
 
 ### 4.2	Visual Design
-Include all wireframes or mock-ups of the interface. Provide a discussion, explanation, and justification for your design choices. Hand-drawn wireframes are acceptable.
 
-- Interface Components: Clearly label all components.
-- Screens/Menus: Provide wireframes for different screens, menus, and options.
-- Design Details: Focus on the layout and size of components; color and graphics are not required. 
+The wireframes correspond to different screens in the user journey as described in the flowchart. These include the welcome screen, nutrition filter, food search, nutrition breakdown, and weight calculator. Each wireframe represents a critical component of the application’s interface.
 
-Example:  
-![Visual Design](./visual_design.png)
+#### 4.2.1 Wireframe Breakdown and Justification
 
+##### **Wireframe 1: Welcome Screen**
 
+![Welcome Screen](./WelcomeWireframe.png)
+
+- **Visual Components**:
+    - Two buttons: "Exit" and "Continue."
+    - Centered image placeholder (likely for branding or a welcome illustration).
+- **Functional Justification**:
+    - **Exit button**: Allows users to quickly close the application, providing an easy and intuitive exit option.
+    - **Continue button**: Prominently placed for immediate user interaction, guiding them toward the main interface.
+    - **Image**: Placeholder may serve as a space for branding, adding visual engagement.
+- **User Flow**: Simple decision-making process at the beginning, either to exit the app or proceed to the main interface.
+- **Justification**: This screen minimizes decision fatigue by offering only two key choices, streamlining the user’s first interaction with the application.
+
+##### **Wireframe 2: Nutrition Filter**
+
+![Nutrition Filter](./NutritionFilterWireframe.png)
+
+- **Visual Components**:
+    - Two filtering sections: one for "Nutrition Range" and one for "Nutrition Level."
+    - Data table displaying filtered results based on user input.
+- **Functional Justification**:
+    - **Nutrition Range filter**: Allows users to input a minimum and maximum range for a nutrient (e.g., proteins), giving precise control over the search results.
+    - **Nutrition Level filter**: Offers predefined levels (e.g., low, mid, high), which simplifies the search for users who may not have specific numbers in mind.
+    - **Search buttons**: Clear and prominent to trigger data retrieval after input.
+    - **Data table**: Presents key nutritional metrics for the filtered foods, providing a clear overview.
+- **User Flow**: Users can easily switch between filtering by range or by level and immediately see the results displayed below.
+- **Justification**: This design supports users who want a more detailed or broader search of food data. It caters to different levels of expertise.
+
+##### **Wireframe 3: Food Search**
+
+![Food Search](./FoodSearchWireframe.png)
+
+- **Visual Components**:
+    - Input field for food name.
+    - Results table showing nutritional values.
+    - Actions buttons: "Breakdown" and "Calculator."
+- **Functional Justification**:
+    - **Search field**: Users input the name of a food item (e.g., "Cheese"), making it a direct search functionality.
+    - **Results table**: Displays key metrics like fat, sugar, sodium, etc., allowing users to scan for the necessary data quickly.
+    - **Breakdown and Calculator buttons**: These offer further actions, leading users to more detailed analyses or weight calculations based on the selected food.
+- **User Flow**: A simple search leads to clear and actionable next steps, allowing users to drill down into the data if needed.
+- **Justification**: This wireframe provides a straightforward way for users to search for a specific food, see its data, and perform advanced actions like breakdowns and calculations, enhancing usability.
+
+##### **Wireframe 4: Nutrition Breakdown**
+
+![Nutrition Breakdown](./NutritionBreakdownWireframe.png)
+
+- **Visual Components**:
+    - Input field for food.
+    - Graph for visualizing nutritional data.
+- **Functional Justification**:
+    - **Graphical representation**: Helps users understand data trends easily through visual breakdowns, enhancing comprehension.
+    - **Food input**: Users can switch between different foods, offering flexibility in comparing different items.
+- **User Flow**: After inputting a food item, users are presented with a graphical representation of the food’s nutritional breakdown, making the data easier to interpret.
+- **Justification**: Visual aids such as graphs are effective tools for data communication, especially in applications involving complex data like nutrition. This design choice helps simplify the information for non-expert users.
+
+##### **Wireframe 5: Weight Calculator**
+
+![Weight Calculator](./WeightCalculatorWireframe.png)
+
+- **Visual Components**:
+    - Input field for food and weight.
+    - Results table with calculated values based on the input weight.
+- **Functional Justification**:
+    - **Weight input**: Allows users to calculate nutritional values based on a specific serving size, providing personalized data.
+    - **Graph and results table**: These visually and numerically display the calculated values, ensuring users get both a detailed and high-level view.
+- **User Flow**: Users input food and weight, then receive tailored nutritional data.
+- **Justification**: This wireframe adds personalization by allowing users to adjust serving sizes and see the nutritional impact. It’s especially useful for users tracking their intake or tailoring it to specific needs.
+
+#### 4.2.2 Consistency Across Wireframes
+
+- **Navigation**: The top menu remains consistent, with navigation options like "Nutrition Filter," "Food Search," "Nutrition Breakdown," and "Weight Calculator." This ensures users can switch between features without confusion.
+- **Visual Consistency**: The use of input fields, buttons, and tables follows a standardized format across wireframes, creating a good user experience.
+- **Justification**: Maintaining consistency in user navigation and layout helps reduce the cognitive load on users and ensures that they can use the app efficiently across different features.
 
