@@ -49,7 +49,7 @@
 
 
 
-## 1. System Vision (Gemma)
+## 1. System Vision
 
 ### 1.1 Problem Background
 
@@ -116,7 +116,7 @@ The Nutritional Food Analysis System provides significant value across various u
 **Comprehensive Data Access:**
   - Centralised Nutritional Information: The system acts as a central repository for detailed nutritional data, reducing the need to consult multiple sources and ensuring consistency in the information provided.
 
-## 2. Requirements (Josh)
+## 2. Requirements
 
 ### 2.1 User Requirements
 
