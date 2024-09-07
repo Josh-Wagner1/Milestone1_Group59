@@ -18,8 +18,8 @@ Please Describe what you have accomplished in this group project.
   - Accomplishments: Completed the Activity Estimation Definition Estimation table (3) for the Project Plan and completed section 2 and 3.2 from the Software Design Document.
 - s222222, Full name
   - Accomplishments: Describe what you have completed or achieved
-- s333333, full name
-  - Accomplishments: Describe what you have completed or achieved
+- s5277614, Gemma Manns
+  - Accomplishments: Completed the Project Plan (1) and Gantt Chart in the Project Plan Document and completed section 1 (Sytem Vision) and 4.1 Structural Design from the Software Design Document
 
 <div style="page-break-after: always;"></div>
 
