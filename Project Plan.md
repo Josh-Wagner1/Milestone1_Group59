@@ -1,6 +1,6 @@
 # Project Plan
 
-## Project Name: Nutrional Food - Assignment.
+## Project Name: Nutritional Food - Assignment.
 ## Group Number: 59
 
 ### Team members
@@ -14,8 +14,8 @@
 ### Brief Description of Contribution
 
 Please Describe what you have accomplished in this group project.
-- s111111, Full name
-  - Accomplishments: Describe what you have completed or achieved
+- s5384766, Joshua Wagner
+  - Accomplishments: Completed the Activity Estimation Definition Estimation table (3) for the Project Plan and completed section 2 and 3.2 from the Software Design Document.
 - s222222, Full name
   - Accomplishments: Describe what you have completed or achieved
 - s333333, full name
@@ -196,11 +196,11 @@ Excluded:
 * Cost/Benefit analysis - Assume unlimited budget and/or free access to users
 
 
-## 2. Work Breakdown Structure (Juan)
+## 2. Work Breakdown Structure
 
 ![WBS](./WBS.png)
 
-## 3. Activity Definition Estimation (Josh)
+## 3. Activity Definition Estimation
 
 Define the activities required for your project based on the WBS, and assign responsibilities to team members. Each activity should be numbered and correspond with your Gantt chart. Provide estimated durations for each activity to facilitate Gantt chart preparation.
 
@@ -241,14 +241,8 @@ Define the activities required for your project based on the WBS, and assign res
 
 
 
-## 4. Gantt Chart (Gemma)
+## 4. Gantt Chart
 
 ![Gantt Chart](./Gantt_chart.png)
 
-Notes: 
-You have to use the provided Gantt chart template.  
-
-Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 
-and scheduling. Ensure that the Gantt chart reflects the activity definitions from Section 3. Track actual start 
-times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately.
 

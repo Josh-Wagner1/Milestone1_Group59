@@ -49,7 +49,7 @@
 
 
 
-## 1. System Vision (Gemma)
+## 1. System Vision
 
 ### 1.1 Problem Background
 
@@ -116,48 +116,21 @@ The Nutritional Food Analysis System provides significant value across various u
 **Comprehensive Data Access:**
   - Centralised Nutritional Information: The system acts as a central repository for detailed nutritional data, reducing the need to consult multiple sources and ensuring consistency in the information provided.
 
-## 2. Requirements (Josh)
+## 2. Requirements
 
 ### 2.1 User Requirements
-#### End users:
-We have listed a fair few end users that could potentially use the product, however “Nutritionist” (or other health professional) and “Health-conscious consumers” are the users that are most likely to fully interact with the program.
 
-**Nutritionist:**
+A frequent user of the software is a **Nutritionist**.
+A Nutritionist is a person that advises their clients on their diet and how it impacts their health so its critical they know the right foods to recommend. On behalf of their clients, Nutritionists need to gather a collection of foods that they can recommend to their client so they will often use most or all features of the software during a singular session to gather the desired foods. The nutritionist has their own needs for each feature and how they present the results to their queries.
+1.	The **Food Search** must accept a text input and return all applicable foods and their nutritional values on a scrollable table that match or contain the search query.
 
-A Nutritionist is an example of a user that may use the program to find a wide variety of foods/ food combinations on behalf of a that meets their dietary needs. To this this primarily do searches across the database primarily using nutrition range and nutrition level filters rather than specific searches with text. They may also use the food calculator so they can correctly portion these foods (and their nutritional levels) for their specified client.
+2.	The **Nutritional Breakdown** will give the nutritionist the option to input a food as text and the software visualises the nutrient composition of the selected food on a pie chart and a bar graph.
 
-**Nutritionist user needs:**
-* An easily accessible search function built for bulk searches.
-* Is correct and consistent with its data.
-* Filters that are relevant to what they need (Calorific value, Protein, Fat, Carbs, Sodium) while also giving the option for more niche filters for specific searches (like vitamins and minerals).
-* A calculation feature that can reliably and accurately scale the nutritional stats of an item based on its weight.
+3.	The **Nutritional Range** allows the nutritionist to select a nutrient type they want to filter and specify a minimum and maximum value (in g) that they want the results to fall within. When the search button is pressed, the nutritionist expects that the software will display all applicable foods and their nutritional details on a scrollable table.
 
-**Health-Conscious Consumers:**
+4.	The **Nutritional Level** allows the nutritionist to select a nutrient type they want to select and a specific nutrient level (Low, Mid or High) compared to the highest value on the database. When the search button is pressed, the nutritionist expects that the software will display all applicable foods and their nutritional details on a scrollable table.
 
-While health-conscious consumers might be more concerned with the specific details of a single food. E.g. they want to know the nutritional benefits of pulled pork for a dinner the following night. They will do this by inputting text into the search bar to look for the stated food. Another such example is a consumer looking up a specific cheese only to find it has too much saturated fat or is lacking another type of nutritional value. So, they do a general search of for “cheese” with a limit of 5g of fat on fat to find some alternate options.
-
-**Health-conscious consumer needs:**
-* Search feature can help pinpoint a specific food.
-* Search text and filters can help find a range of foods that can are useful for their diet.
-* UI is simple and easy to navigate and complete a search within seconds.
-
-#### Operational users:
-Like the end users there are a fair few operational users but the main ones that directly interact with the end user are the “Database Administrator” and the “System” itself. Taking from the perspective of the end user both these user’s serve different roles:
-
-**Database Administrator**
-The Database Administrator plays a simple role of providing downloadable updates to the database/ program in case it goes out of date or needs maintenance. Their only direct interaction with the client is the popup and changelog of what has been modified. 
-
-**Database administrator needs:**
-* Easily accessible UI to update the data.
-* A way to log changes through a change-log field.
-
-**System:**
-While the System is the sole user that interacts with the program to provide the main services. With every food search (along with applied filters) the system will return the appropriate result(s) for the search. When the user selects a food item, the system will also display a page with the relevant pie charts and bar graphs on its nutritional breakdown. The final task for the system to calculate the nutritional information on based on a food item and weight set by the user.
-
-**System user needs:**
-* Full access to the stored data instance for reading purposes.
-* A compute module for the functionality of the Food Calculator function.
-* To be regularly updated if there is a change to the stored information.
+5.	The **Weight Calculator** Allows the nutritionist to input a food as text and a desired weight to scale to. Then the Nutritionist expects the system to visualise the scaled nutritional values on a table and bar graph. 
 
 
 ### 2.2	Software Requirements
@@ -174,11 +147,11 @@ While the System is the sole user that interacts with the program to provide the
 * R6.2 The Weight calculator shall provide a list of scaled nutritional values based on the inputted food and weight. 
 
 #### Non-Functional requirements: 
-* R1.1 User Interface is clean and easy to navigate.
-* R2.1 Widget layout is consistent both in size and position.
-* R3.1 Widgets follow the same layout/sizing practices of other applications.
-* R4.1 List of values is properly aligned with associated nutrition column names.
-* R5.1 Buttons and navigational widgets transfer to the correct Frame/ function when interacted with.
+* R1.1 User Interface shall be clean and easy to navigate.
+* R2.1 Widget layout shall be consistent both in size and position.
+* R3.1 Widgets shall follow the same layout/sizing practices of other applications.
+* R4.1 List of values shall be properly aligned with associated nutrition column names.
+* R5.1 Buttons and navigational widgets shall transfer to the correct Frame/ function when interacted with.
 
 ### 2.3 Use Case Diagram
 
@@ -317,6 +290,11 @@ While the System is the sole user that interacts with the program to provide the
 
 
 #### 3.2.2 Data Structures / Data Sources
+**Food_Nutrition_Dataset.csv**
+* Type: csv file
+* Usage: Contains all the data in comma delimited format.
+* Functions: All except for Weight_Calculator.
+
 **Line**
 * Type: String
 * Usage: Stores the next line of csv data that needs to be read and stored in CSV_Arr[][].
@@ -383,12 +361,14 @@ While the System is the sole user that interacts with the program to provide the
 
 START\
 Open Food_Nutrition_Dataset.csv for reading\
-Initialise array CSV_Arr[][]\
+Initialise array CSV_Arr[][]
+
 For each Line in Food_Nutrition_Dataset.csv\
 &nbsp;&nbsp;&nbsp;&nbsp;Line = Read line of “Food_Nutrition_Dataset.csv”\
 &nbsp;&nbsp;&nbsp;&nbsp;Split Line by comma delimiter\
 &nbsp;&nbsp;&nbsp;&nbsp;Insert line into one line of CSV_Arr[][]\
-End For\
+End For
+
 Close Food_Nutrition_Dataset.csv\
 Return CSV_Arr[][]\
 END
@@ -400,13 +380,15 @@ START\
 Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
 Initialise string User_Food_Input = system.readtextinput()\
 Initialise array Food_Arr[][]\
-Initialise int i = 0\
+Initialise int i = 0
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 
@@ -417,14 +399,16 @@ START\
 Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
 initialise string User_Food_Input = system.readtextinput()\
 Initialise array SFood_Arr[]\
-Initialise int i = 0\
+Initialise int i = 0
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to SFood_Arr[]\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Return SFood_Arr[]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return -1\
 END
 
@@ -435,12 +419,14 @@ END
 START\
 initialise string User_Food_Input = system.readtextinput()\
 initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
-initialise int i = 0\
+initialise int i = 0
+
 For each index i from 0 to SFood_Arr[].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] to visible table\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to pie chat\
 &nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to bar graph\
-End For\
+End For
+
 Return pie chart, bar graph\
 END
 
@@ -452,10 +438,12 @@ initialise string User_Food_Input = system.readtextinput()\
 initialise float User_Weight_Input = float(system.readtextinput())\
 initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
 initialise array Calc_Food_Arr[]\
-initialise int i = 0\
+initialise int i = 0
+
 For each index i from 0 to SFood_Arr[].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;Calc_Food_Arr[i] = SFood_Arr[i] * (User_Weight_Input /100)\
-End For\
+End For
+
 Return Calc_Food_Arr[]\
 END
 
@@ -468,19 +456,22 @@ initialise string User_Nutrient_Input = system.readtextinput()\
 initialise string User_Nutrient_Level = system.readtextinput()\
 initialise array Food_Arr[][]\
 initialise int i = 0\
-initialise int j = 0\
+initialise int j = 0
+
 While global.CSV_Arr[0][j] is not NULL\
 &nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;j += 1\
-End While\
+End While
+
 For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] meets level of User_Nutrient_Level\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 
@@ -494,7 +485,8 @@ initialise float User_Nutrient_Min = float(system.readtextinput())\
 initialise float User_Nutrient_Max = float(system.readtextinput())\
 initialise array Food_Arr[][]\
 initialise int i = 0\
-initialise int j = 0\
+initialise int j = 0
+
 While global.CSV_Arr[0][j] is not NULL\
 &nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
@@ -506,7 +498,8 @@ For each index i from 0 to CSV_Arr[][].RowCount() – 1\
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
 &nbsp;&nbsp;&nbsp;&nbsp;End If\
 &nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For\
+End For
+
 Return Food_Arr[][]\
 END
 
@@ -577,14 +570,84 @@ Justification: The organisation of information into distinct groups based on fun
 ![Structural Design](./Structural_Design.png)
 
 ### 4.2	Visual Design
-Include all wireframes or mock-ups of the interface. Provide a discussion, explanation, and justification for your design choices. Hand-drawn wireframes are acceptable.
 
-- Interface Components: Clearly label all components.
-- Screens/Menus: Provide wireframes for different screens, menus, and options.
-- Design Details: Focus on the layout and size of components; color and graphics are not required. 
+The wireframes correspond to different screens in the user journey as described in the flowchart. These include the welcome screen, nutrition filter, food search, nutrition breakdown, and weight calculator. Each wireframe represents a critical component of the application’s interface.
 
-Example:  
-![Visual Design](./visual_design.png)
+#### 4.2.1 Wireframe Breakdown and Justification
 
+##### **Wireframe 1: Welcome Screen**
 
+![Welcome Screen](./WelcomeWireframe.png)
+
+- **Visual Components**:
+    - Two buttons: "Exit" and "Continue."
+    - Centered image placeholder (likely for branding or a welcome illustration).
+- **Functional Justification**:
+    - **Exit button**: Allows users to quickly close the application, providing an easy and intuitive exit option.
+    - **Continue button**: Prominently placed for immediate user interaction, guiding them toward the main interface.
+    - **Image**: Placeholder may serve as a space for branding, adding visual engagement.
+- **User Flow**: Simple decision-making process at the beginning, either to exit the app or proceed to the main interface.
+- **Justification**: This screen minimizes decision fatigue by offering only two key choices, streamlining the user’s first interaction with the application.
+
+##### **Wireframe 2: Nutrition Filter**
+
+![Nutrition Filter](./NutritionFilterWireframe.png)
+
+- **Visual Components**:
+    - Two filtering sections: one for "Nutrition Range" and one for "Nutrition Level."
+    - Data table displaying filtered results based on user input.
+- **Functional Justification**:
+    - **Nutrition Range filter**: Allows users to input a minimum and maximum range for a nutrient (e.g., proteins), giving precise control over the search results.
+    - **Nutrition Level filter**: Offers predefined levels (e.g., low, mid, high), which simplifies the search for users who may not have specific numbers in mind.
+    - **Search buttons**: Clear and prominent to trigger data retrieval after input.
+    - **Data table**: Presents key nutritional metrics for the filtered foods, providing a clear overview.
+- **User Flow**: Users can easily switch between filtering by range or by level and immediately see the results displayed below.
+- **Justification**: This design supports users who want a more detailed or broader search of food data. It caters to different levels of expertise.
+
+##### **Wireframe 3: Food Search**
+
+![Food Search](./FoodSearchWireframe.png)
+
+- **Visual Components**:
+    - Input field for food name.
+    - Results table showing nutritional values.
+    - Actions buttons: "Breakdown" and "Calculator."
+- **Functional Justification**:
+    - **Search field**: Users input the name of a food item (e.g., "Cheese"), making it a direct search functionality.
+    - **Results table**: Displays key metrics like fat, sugar, sodium, etc., allowing users to scan for the necessary data quickly.
+    - **Breakdown and Calculator buttons**: These offer further actions, leading users to more detailed analyses or weight calculations based on the selected food.
+- **User Flow**: A simple search leads to clear and actionable next steps, allowing users to drill down into the data if needed.
+- **Justification**: This wireframe provides a straightforward way for users to search for a specific food, see its data, and perform advanced actions like breakdowns and calculations, enhancing usability.
+
+##### **Wireframe 4: Nutrition Breakdown**
+
+![Nutrition Breakdown](./NutritionBreakdownWireframe.png)
+
+- **Visual Components**:
+    - Input field for food.
+    - Graph for visualizing nutritional data.
+- **Functional Justification**:
+    - **Graphical representation**: Helps users understand data trends easily through visual breakdowns, enhancing comprehension.
+    - **Food input**: Users can switch between different foods, offering flexibility in comparing different items.
+- **User Flow**: After inputting a food item, users are presented with a graphical representation of the food’s nutritional breakdown, making the data easier to interpret.
+- **Justification**: Visual aids such as graphs are effective tools for data communication, especially in applications involving complex data like nutrition. This design choice helps simplify the information for non-expert users.
+
+##### **Wireframe 5: Weight Calculator**
+
+![Weight Calculator](./WeightCalculatorWireframe.png)
+
+- **Visual Components**:
+    - Input field for food and weight.
+    - Results table with calculated values based on the input weight.
+- **Functional Justification**:
+    - **Weight input**: Allows users to calculate nutritional values based on a specific serving size, providing personalized data.
+    - **Graph and results table**: These visually and numerically display the calculated values, ensuring users get both a detailed and high-level view.
+- **User Flow**: Users input food and weight, then receive tailored nutritional data.
+- **Justification**: This wireframe adds personalization by allowing users to adjust serving sizes and see the nutritional impact. It’s especially useful for users tracking their intake or tailoring it to specific needs.
+
+#### 4.2.2 Consistency Across Wireframes
+
+- **Navigation**: The top menu remains consistent, with navigation options like "Nutrition Filter," "Food Search," "Nutrition Breakdown," and "Weight Calculator." This ensures users can switch between features without confusion.
+- **Visual Consistency**: The use of input fields, buttons, and tables follows a standardized format across wireframes, creating a good user experience.
+- **Justification**: Maintaining consistency in user navigation and layout helps reduce the cognitive load on users and ensures that they can use the app efficiently across different features.
 
