@@ -19,7 +19,7 @@ Please Describe what you have accomplished in this group project.
 - s5280075, Juan Martinez
   - Accomplishments: Completed the Work Breakdown Structure (2) for the Project Plan and completed section 3.1 Software Design - Flow Chart and 4.2 Visual Design from the Software Design Document.
 - s5277614, Gemma Manns
-  - Accomplishments: Completed the Project Plan (1) and Gantt Chart in the Project Plan Document and completed section 1 (Sytem Vision) and 4.1 Structural Design from the Software Design Document
+  - Accomplishments: Completed the Project Plan (1) and Gantt Chart in the Project Plan Document and completed section 1 (System Vision) and 4.1 Structural Design from the Software Design Document
 
 <div style="page-break-after: always;"></div>
 

@@ -1,0 +1,88 @@
+* c8faffc 2024-09-07 by [Juan Martinez] | * Software Design Document 	- Adding Exit Button to Justification * Project Plan Document 	- Contribution Juan * Delete Visual Design Example (HEAD -> Josh, origin/main, origin/HEAD, main)
+*   6fa5551 2024-09-07 by [gemmamanns] | Merge pull request #12 from Josh-Wagner1/Gemma
+|\  
+| * f0dd958 2024-09-07 by [gemmamanns] | Added Acomplishments, deleted unnecessary .pngs and updated 1.2 of the SDD to be more thorough
+| *   fe46f6a 2024-09-07 by [gemmamanns] | Merge pull request #11 from Josh-Wagner1/main
+| |\  
+| |/  
+|/|   
+* | 9821b56 2024-09-06 by [Juan Martinez] | Visual Design - Wireframes Justification - Consistency in wireframes
+* | f2cf1db 2024-09-06 by [Juan Martinez] | Wireframes - New Wireframes Documents - Wireframes Images
+* | 2a111a6 2024-09-05 by [Josh-Wagner1] | Updated UCD and minor edits
+* | 0529c6d 2024-09-05 by [Josh-Wagner1] | Modified 2.1 to meet rubric
+* | 2051259 2024-09-04 by [Josh-Wagner1] | Edits to plan and documents
+* |   a3e05ad 2024-09-04 by [Juan Martinez] | Merge branch 'Juan'
+|\ \  
+| * | ca6547c 2024-09-04 by [Juan Martinez] | Wireframes -Add Wireframes Files
+* | |   1d25f8e 2024-08-31 by [gemmamanns] | Merge pull request #10 from Josh-Wagner1/Gemma
+|\ \ \  
+| | |/  
+| |/|   
+| * | c87d6ad 2024-08-31 by [gemmamanns] | Inserted 4.2 and Structural Design flow chart
+| * |   4c72111 2024-08-31 by [gemmamanns] | Merge pull request #9 from Josh-Wagner1/main
+| |\ \  
+| |/ /  
+|/| |   
+* | | c2d5d79 2024-08-29 by [Josh-Wagner1] | Adding 3.2 stuff to the SDD
+* | | 4131af2 2024-08-28 by [gemmamanns] | Merge pull request #8 from Josh-Wagner1/Gemma
+|\| | 
+| * | 0ddc13a 2024-08-28 by [gemmamanns] | Update Software Design Document.md
+| * |   0107e00 2024-08-28 by [gemmamanns] | Merge pull request #7 from Josh-Wagner1/main
+| |\ \  
+| |/ /  
+|/| |   
+* | | 7966661 2024-08-27 by [Josh-Wagner1] | Adding all UCD stuff to the SDD
+* | |   20853b5 2024-08-27 by [Josh-Wagner1] | Resolving a merge conflict on my branch
+|\ \ \  
+| * \ \   8959419 2024-08-26 by [Juan Martinez] | Merge branch 'main' of github.com:Josh-Wagner1/Milestone1_Group59
+| |\ \ \  
+| | |_|/  
+| |/| |   
+| | * | abdb820 2024-08-26 by [gemmamanns] | Merge pull request #6 from Josh-Wagner1/Gemma
+| | |\| 
+| | | * 6112675 2024-08-26 by [gemmamanns] | Change to Project Plan and SDD
+| | | * 28b2a33 2024-08-26 by [gemmamanns] | Update Project Plan.md
+| * | | ca5d6be 2024-08-26 by [Juan Martinez] | Update Software Design Document
+| * | | c764b2c 2024-08-26 by [Juan Martinez] | Flow Chart
+| * | | e996eab 2024-08-25 by [Juan Martinez] | Modify WBS
+| |/ /  
+| * | bd87131 2024-08-24 by [gemmamanns] | Merge pull request #5 from Josh-Wagner1/Gemma
+| |\| 
+| | * 65a28c9 2024-08-24 by [gemmamanns] | Moved instructions in Gantt Chart to under notes.
+| | * 1054036 2024-08-24 by [gemmamanns] | Completed Gantt chart and Project Scope
+| |/  
+| * 345765a 2024-08-24 by [Josh-Wagner1] | added this meeting's notes
+| * 1131d40 2024-08-22 by [Josh-Wagner1] | Changed ADE to match WBS
+* | ff7a109 2024-08-22 by [Josh-Wagner1] | Changed ADE to match WBS
+|/  
+* 87b5975 2024-08-21 by [Juan Martinez] | Work Breakdown Structure -Work Breakdown Structure Graph Design.
+* 27b8004 2024-08-20 by [Josh-Wagner1] | Added Activity Definition Estimation Table.
+*   486e724 2024-08-20 by [Josh-Wagner1] | Merge branch 'main' of https://github.com/Josh-Wagner1/Milestone1_Group59 into Josh Adding the current stuff in main to my branch
+|\  
+| *   c587dc6 2024-08-20 by [gemmamanns] | Merge pull request #4 from Josh-Wagner1/Gemma
+| |\  
+| | * e15be0d 2024-08-20 by [gemmamanns] | Update Project Plan.md
+| | *   6ca9046 2024-08-20 by [gemmamanns] | Merge pull request #3 from Josh-Wagner1/main
+| | |\  
+| | |/  
+| |/|   
+* | | f881c53 2024-08-13 by [Josh-Wagner1] | Merge branch 'main' of https://github.com/Josh-Wagner1/Milestone1_Group59 into Josh
+|\| | 
+| * | f288358 2024-08-13 by [Josh-Wagner1] | Added notes from today's meeting
+* | |   c5d45b2 2024-08-13 by [Josh-Wagner1] | Merge branch 'Josh' of https://github.com/Josh-Wagner1/Milestone1_Group59 into Josh
+|\ \ \  
+| * | | 38b7459 2024-08-13 by [Josh-Wagner1] | Merge pull request #2 from Josh-Wagner1/main (origin/Josh)
+| |\| | 
+* | | | f620af6 2024-08-13 by [Josh-Wagner1] | Added notes from today's meeting
+| |/ /  
+|/| |   
+* | | 71b120c 2024-08-11 by [Juan Martinez] | Update Software Design and Project Plan documents -Adding my student number and name -Adding Project name and group number.
+|/ /  
+* | 23c3f00 2024-08-09 by [Josh-Wagner1] | Added my details to PP and SDD
+* | 1b6d012 2024-08-09 by [gemmamanns] | Merge pull request #1 from Josh-Wagner1/Gemma
+|\| 
+| * d0ea0fb 2024-08-09 by [gemmamanns] | Update Software Design Document.md (origin/Gemma)
+|/  
+* 222ae17 2024-08-05 by [Josh-Wagner1] | Added project files
+* e8eb0a1 2024-08-05 by [Josh-Wagner1] | Edited .gitignore
+* b4878a0 2024-08-05 by [Josh-Wagner1] | Initial commit
