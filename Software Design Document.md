@@ -83,14 +83,31 @@ Doctors: Utilise the tool to recommend and plan dietary interventions for patien
 
 ### 1.2 System capabilities/overview
 
-The System will do the following:
+Key system capabilities include:
 
-- Display results from the following searches of the Database:
-  - Food Search - Text search names for specific entries. 
-  - Nutrition Range Filter - Filter entries by nutrition values
-  - Nutrition Level Filter - Filter entries by nutritional content levels. 
-- Display the nutritional breakdown of entries when selected by the end user, in both numerical and graphical form.  
-- View Changelog
+#### Food Search:
+
+Users can input text to search for specific food items by name. The system will return results in a table format, displaying the corresponding nutritional information for each matching food item. This search feature helps users quickly find the foods they are interested in and review their nutritional profiles.
+ 
+#### Nutritional Breakdown:
+
+For any selected food item, the system will display its nutritional breakdown in both numerical and graphical formats. Users can view pie charts and bar graphs that visually represent the nutrient composition, making it easier to understand the relative amounts of calories, fats, proteins, vitamins, and other nutrients.
+
+#### Nutritional Range Filter:
+
+This feature allows users to filter food items by setting minimum and maximum values for specific nutrients, such as calories, fats, or proteins. The system will display all food items that meet the specified nutrient ranges, providing a customised list of results based on the user's requirements.
+
+#### Nutritional Level Filter:
+
+Users can filter food items by predefined nutrient levels (low, medium, or high) compared to the maximum values in the database. This allows for a broader, qualitative search when precise numeric filtering is not necessary or desired. The system will return food items that fall into the selected nutrient level.
+
+#### Weight Calculator:
+
+Users can input a specific food item and a desired serving size (in grams). The system will then calculate the scaled nutritional values based on the input weight, providing personalised nutritional information for different portion sizes. This feature is useful for users aiming for portion control or tailored meal planning.
+
+#### Visual and Textual Output:
+
+The system supports both textual and graphical outputs. In addition to text-based tables listing the nutritional details, the graphical outputs such as pie charts and bar graphs provide a more engaging and intuitive way to analyse food data. This dual format caters to both detailed-oriented users and those who prefer visual summaries.
 
 
 ### 1.3	Benefit Analysis
