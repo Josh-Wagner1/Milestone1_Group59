@@ -16,8 +16,8 @@
 Please Describe what you have accomplished in this group project.
 - s5384766, Joshua Wagner
   - Accomplishments: Completed the Activity Estimation Definition Estimation table (3) for the Project Plan and completed section 2 and 3.2 from the Software Design Document.
-- s222222, Full name
-  - Accomplishments: Describe what you have completed or achieved
+- s5280075, Juan Martinez
+  - Accomplishments: Completed the Work Breakdown Structure (2) for the Project Plan and completed section 3.1 Software Design - Flow Chart and 4.2 Visual Design from the Software Design Document.
 - s5277614, Gemma Manns
   - Accomplishments: Completed the Project Plan (1) and Gantt Chart in the Project Plan Document and completed section 1 (Sytem Vision) and 4.1 Structural Design from the Software Design Document
 

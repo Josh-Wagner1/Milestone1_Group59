@@ -664,7 +664,7 @@ The wireframes correspond to different screens in the user journey as described 
 
 #### 4.2.2 Consistency Across Wireframes
 
-- **Navigation**: The top menu remains consistent, with navigation options like "Nutrition Filter," "Food Search," "Nutrition Breakdown," and "Weight Calculator." This ensures users can switch between features without confusion.
+- **Navigation**: The top menu remains consistent, with navigation options like "Nutrition Filter", "Food Search", "Nutrition Breakdown", and "Weight Calculator". This ensures users can switch between features without confusion. The "Exit" button is consistently placed in the top-right corner of all screens except the Welcome Screen. This ensures that users have a clear and accessible option to exit the application at any time, contributing to a smooth user experience.
 - **Visual Consistency**: The use of input fields, buttons, and tables follows a standardized format across wireframes, creating a good user experience.
 - **Justification**: Maintaining consistency in user navigation and layout helps reduce the cognitive load on users and ensures that they can use the app efficiently across different features.
 
