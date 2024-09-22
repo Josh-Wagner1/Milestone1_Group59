@@ -53,7 +53,7 @@ def nutrition_filter_min_max(level):
     return percentage_low, percentage_high
 
 def nutrition_level_filter(user_nutrient_input, user_nutrient_level, data: pd.DataFrame):
-    percentage_low, percentage_high = nutrition_filter_levels(user_nutrient_level)
+    percentage_low, percentage_high = nutrition_filter_min_max(user_nutrient_level)
     nutrient_column = data[user_nutrient_input]
     food_arr = []
     #finding the highest value of the nutrient
