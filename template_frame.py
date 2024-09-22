@@ -295,29 +295,29 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer13.Add( ( 75, 0), 0, wx.EXPAND, 5 )
 
-        self.m_grid1 = wx.grid.Grid( self.m_NutritionRange, wx.ID_ANY, wx.DefaultPosition, wx.Size( 550,180 ), 0 )
+        self.m_gridNR = wx.grid.Grid( self.m_NutritionRange, wx.ID_ANY, wx.DefaultPosition, wx.Size( 550,180 ), 0 )
 
         # Grid
-        self.m_grid1.CreateGrid( 10, 6 )
-        self.m_grid1.EnableEditing( True )
-        self.m_grid1.EnableGridLines( True )
-        self.m_grid1.EnableDragGridSize( False )
-        self.m_grid1.SetMargins( 0, 0 )
+        self.m_gridNR.CreateGrid( 10, 6 )
+        self.m_gridNR.EnableEditing( True )
+        self.m_gridNR.EnableGridLines( True )
+        self.m_gridNR.EnableDragGridSize( False )
+        self.m_gridNR.SetMargins( 0, 0 )
 
         # Columns
-        self.m_grid1.EnableDragColMove( False )
-        self.m_grid1.EnableDragColSize( True )
-        self.m_grid1.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+        self.m_gridNR.EnableDragColMove( False )
+        self.m_gridNR.EnableDragColSize( True )
+        self.m_gridNR.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
-        self.m_grid1.EnableDragRowSize( True )
-        self.m_grid1.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+        self.m_gridNR.EnableDragRowSize( True )
+        self.m_gridNR.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Label Appearance
 
         # Cell Defaults
-        self.m_grid1.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-        bSizer13.Add( self.m_grid1, 0, wx.ALL, 5 )
+        self.m_gridNR.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        bSizer13.Add( self.m_gridNR, 0, wx.ALL, 5 )
 
 
         bSizer8.Add( bSizer13, 1, wx.EXPAND, 5 )
