@@ -6,7 +6,7 @@ import re
 from template_frame import MyFrame1 as WelFrame
 from template_frame import MyFrame2 as MFrame
 
-from all_functions import filter_food_by_name
+from all_functions import filter_food_by_name, nutrition_level_filter, nutrition_filter_min_max, nutrition_range_filter
 
 class WelcomeFrame(WelFrame):
     def __init__(self,parent=None):
