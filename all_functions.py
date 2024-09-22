@@ -24,14 +24,14 @@ def filter_food_by_name(food_name: str, data: pd.DataFrame):
 def nutrition_range_filter(user_nutrient_input, user_nutrient_min, user_nutrient_max, data: pd.DataFrame):
 
     nutrient_column = data[user_nutrient_input]
-    user_nutrient_min = int(min_range)
-    user_nutrient_max = int(max_range)
+    user_nutrient_min = int(user_nutrient_min)
+    user_nutrient_max = int(user_nutrient_max)
     food_arr = []
     for entry in nutrient_column:
         if entry < user_nutrient_max and entry > user_nutrient_min:
-            filtered_data.append(True)
+            food_arr.append(True)
         else:
-            filtered_data.append(False)
+            filter_food_by_name().append(False)
 
     return food_arr
 
@@ -52,13 +52,23 @@ def nutrition_filter_levels(level):
 
     return percentage_low, percentage_high
 
-def nutrition_filter_search_levels(user_nutrient_input, user_nutrient_level, data: pd.DataFrame):
+def nutrition_level_filter(user_nutrient_input, user_nutrient_level, data: pd.DataFrame):
     percentage_low, percentage_high = nutrition_filter_levels(user_nutrient_level)
     nutrient_column = data[user_nutrient_input]
     food_arr = []
+    #finding the highest value of the nutrient
+    highest_value = 0
     for entry in nutrient_column:
-            if entry > percentage_low and entry < percentage_high:
-                food_arr.append(True)
-            else:
-                food_arr.append(False)
+        if entry > highest_value:
+            highest_value = float(entry)
+        else:
+            pass
+    #calculating the percentage of each entry of the highest nutrient
+    for entry in nutrient_column:
+        nutrition_percentage = float(entry) / highest_value * 100
+        #adding the entry to results if percentage in selected limits
+        if nutrition_percentage > percentage_low and nutrition_percentage < percentage_high:
+            food_arr.append(True)
+        else:
+            food_arr.append(False)
     return food_arr
