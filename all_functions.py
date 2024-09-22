@@ -37,7 +37,7 @@ def nutrition_range_filter(user_nutrient_input, user_nutrient_min, user_nutrient
 
 
 #function that gives the high and low values for the levels for the nutrition level filter
-def nutrition_filter_levels(level):
+def nutrition_filter_min_max(level):
     percentage_low = 0
     percentage_high = 0
     if level == 'high':
@@ -72,3 +72,4 @@ def nutrition_level_filter(user_nutrient_input, user_nutrient_level, data: pd.Da
         else:
             food_arr.append(False)
     return food_arr
+
