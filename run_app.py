@@ -47,10 +47,10 @@ class MainFrame(MFrame):
         # Create grid
         self.m_gridFS.SetTable(self.table, takeOwnership=True)
         self.m_gridFS.AutoSize()
-        self.m_gridNR.SetTable(self.table, takeOwnership=True)
-        self.m_gridNR.AutoSize()
-        self.m_gridNL.SetTable(self.table, takeOwnership=True)
-        self.m_gridNL.AutoSize()
+        # self.m_gridNR.SetTable(self.table, takeOwnership=True)
+        # self.m_gridNR.AutoSize()
+        # self.m_gridNL.SetTable(self.table, takeOwnership=True)
+        # self.m_gridNL.AutoSize()
         self.f_OpenFS(None)
 
     # All f_Open functions are used to open frames when the labels on the top bar are clicked.
@@ -99,23 +99,24 @@ class MainFrame(MFrame):
         df = self.table.data
 
         search_result = df[nutrition_range_filter(nutrient_input, min_input, max_input, df)]
-        result_table = DTable(search_result)
 
+        result_table = DTable(search_result)
         self.m_gridNR.ClearGrid()
-        self.m_gridNR.SetTable(result_table, takeOwnership=True)
+        self.m_gridNR.SetTable(result_table, True)
         self.m_gridNR.AutoSize()
+        self.Layout()
 
     def f_NLFilter(self, event):
         nutrient_input = self.m_cbNL.GetValue()
         level_input = self.m_cbNLL.GetValue()
         df = self.table.data
 
-        search_result = df[nutrition_level_filter(nutrient_input, level_input, df)]
+        search_result = df[nutrition_level_filter(nutrient_input, level_input.strip(), df)]
         result_table = DTable(search_result)
 
-        self.m_gridNR.ClearGrid()
-        self.m_gridNR.SetTable(result_table, takeOwnership=True)
-        self.m_gridNR.AutoSize()
+        self.m_gridNL.ClearGrid()
+        self.m_gridNL.SetTable(result_table, takeOwnership=True)
+        self.m_gridNL.AutoSize()
 
     def f_FSSearch( self, event ):
         search_input = self.m_cbFS.GetValue()
