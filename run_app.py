@@ -1,59 +1,74 @@
+# Import statements
 import wx
 import wx.grid
 import pandas as pd
 import re
+import matplotlib
+matplotlib.use('WXAgg')
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
+import matplotlib.pyplot as plt
+from itertools import islice
 
 from template_frame import MyFrame1 as WelFrame
 from template_frame import MyFrame2 as MFrame
 
 from all_functions import load_data, filter_food_by_name, nutrition_level_filter, nutrition_filter_min_max, nutrition_range_filter, filter_food_by_exact_name, calculate_nutrients, nutrition_breakdown
 
+# Class for defining the basic features of tables in the program
 class DTable(wx.grid.GridTableBase):
     def __init__(self, data=None):
         wx.grid.GridTableBase.__init__(self)
         self.headerRows = 1
         self.data = data
 
+    # Explains itself
     def GetNumberRows(self):
         return len(self.data.index)
 
+    # Explains itself
     def GetNumberCols(self):
         return len(self.data.columns)
 
+    #Used to retrieve all the values
     def GetValue(self, row, col):
         return self.data.iloc[row, col]
 
+    # Used to retrieve and display the column names
     def GetColLabelValue(self, col):
         return self.data.columns[col]
+
+# Class for the welcome frame of the application
 class WelcomeFrame(WelFrame):
     def __init__(self,parent=None):
         super().__init__(parent)
         self.Show()
 
+    # Opens the next frame when the continue button is clicked
     def f_Continue( self, event ):
         self.Hide()
         main_frame = MainFrame()
         main_frame.Show()
 
+    # Closes the application if clicked
     def f_Exit( self, event ):
         self.Close()
 
+# Class for the main frame of the application
+# There are 2 types of functions f_open[Frame name] and f_[Frame name]
+# The former is used to open and close frames using the topbar
+# While the latter is activated when the search button (or equivelent) is pressed.
 class MainFrame(MFrame):
     def __init__(self,parent=None):
         super().__init__(parent)
         self.CurrPanel = self.m_FoodSearch
         self.df = load_data(r".\Food_Nutrition_Dataset.csv")
         self.table = DTable(self.df)
-        # Create grid
+
+        # Create the grid shown on FS
         self.m_gridFS.SetTable(self.table, takeOwnership=True)
         self.m_gridFS.AutoSize()
-        # self.m_gridNR.SetTable(self.table, takeOwnership=True)
-        # self.m_gridNR.AutoSize()
-        # self.m_gridNL.SetTable(self.table, takeOwnership=True)
-        # self.m_gridNL.AutoSize()
         self.f_OpenFS(None)
 
-    # All f_Open functions are used to open frames when the labels on the top bar are clicked.
     def f_OpenNF( self, event ):
         self.CurrPanel.Hide()
         self.CurrPanel = self.m_NutritionFilter
@@ -93,36 +108,35 @@ class MainFrame(MFrame):
         self.CurrPanel.Show()
 
     def f_NRFilter( self, event ):
-        nutrient_input = self.m_cbNR.GetValue()
-        min_input = float(self.m_txtMin.GetValue())
-        max_input = float(self.m_txtMax.GetValue())
+        nutrient_input = self.m_txtNR.GetValue()
+        min_input = self.m_txtMin.GetValue()
+        max_input = self.m_txtMax.GetValue()
         df = self.table.data
 
-        search_result = df[nutrition_range_filter(nutrient_input, min_input, max_input, df)]
+        search_result = df[nutrition_range_filter(nutrient_input.strip(), min_input, max_input, df)]
 
         result_table = DTable(search_result)
         self.m_gridNR.ClearGrid()
         self.m_gridNR.SetTable(result_table, True)
-        self.m_gridNR.AutoSize()
         self.Layout()
 
     def f_NLFilter(self, event):
-        nutrient_input = self.m_cbNL.GetValue()
+        nutrient_input = self.m_txtNL.GetValue()
         level_input = self.m_cbNLL.GetValue()
         df = self.table.data
 
-        search_result = df[nutrition_level_filter(nutrient_input, level_input.strip(), df)]
+        search_result = df[nutrition_level_filter(nutrient_input.strip(), level_input.strip(), df)]
         result_table = DTable(search_result)
 
         self.m_gridNL.ClearGrid()
         self.m_gridNL.SetTable(result_table, takeOwnership=True)
-        self.m_gridNL.AutoSize()
+        self.Layout()
 
     def f_FSSearch( self, event ):
-        search_input = self.m_cbFS.GetValue()
+        search_input = self.m_txtFS.GetValue()
         data = self.table.data
 
-        search_result = filter_food_by_name(search_input, data)
+        search_result = filter_food_by_name(search_input.strip(), data)
         table = DTable(search_result)
 
         self.m_gridFS.ClearGrid()
@@ -131,33 +145,53 @@ class MainFrame(MFrame):
         self.Layout()
 
     def f_NBSearch( self, event ):
-        search = self.m_cbNB.GetValue()
+        search = self.m_txtNB.GetValue()
         data = self.table.data
 
         selected_food = nutrition_breakdown(search, data)
+        ref_food = selected_food.iloc[2:-1]
 
-        print(type(selected_food))
-        print(selected_food)
+        figure = self.plot_pie_chart(ref_food)
 
+        h, w = self.m_NBGraph.GetSize()
+        figure.set_size_inches(h / figure.get_dpi(), w / figure.get_dpi())
+        canvas = FigureCanvasWxAgg(self.m_NBGraph, -1, figure)
+        canvas.SetSize(self.m_NBGraph.GetSize())
+        self.Layout()
+
+    def plot_pie_chart(self, data):
+        explode = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+        figure_score, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
+
+        ax1.pie(data, labels=data.index, autopct='%1.1f%%', startangle=90, explode=explode, shadow=True)
+        ax1.set_title(u'Pie Chart')
+        ax1.axis('on')
+
+        ax2.bar(data.index, data)
+        ax2.set_title('Bar Chart')
+        ax2.set_xlabel(u'Type of nutrient')
+        ax2.set_ylabel(u'Weight in grams')
+
+        return figure_score
 
     def f_WCCalculate( self, event ):
-        search = self.m_cbWC.GetValue()
-        weight = float(self.m_txtWeight.GetValue())
+        search = self.m_txtWC.GetValue()
+        weight = self.m_txtWeight.GetValue()
         data = self.table.data
         calc_result = calculate_nutrients(search, data, weight)
 
         self.m_gridWC.ClearGrid()
         self.m_gridWC.SetColLabelValue(0, "Nutrient")
-        self.m_gridWC.SetColLabelValue(0, "value (g)")
+        self.m_gridWC.SetColLabelValue(1, "Scaled value (g)")
 
-        for row, (i, j) in enumerate(calc_result.items()):
+        for row, (i, j) in enumerate(islice(calc_result.items(), 1, None)):
             self.m_gridWC.SetCellValue(row, 0, str(i))
-            self.m_gridWC.SetCellValue(row, 1, str(j))
+            self.m_gridWC.SetCellValue(row, 1, str(round(j, 2)))
 
         self.m_gridWC.AutoSize()
         self.Layout()
 
-
+# Runs the application
 if __name__ == "__main__":
 
     app = wx.App()

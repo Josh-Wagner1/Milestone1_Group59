@@ -49,6 +49,11 @@ def filter_food_by_exact_name(food_name: str, data: pd.DataFrame):
 
 #function for retrieving the nutrient values for a specific food item
 def nutrition_breakdown(food_name: str, data: pd.DataFrame, nutrients: list = None):
+    if not isinstance(food_name, str) or not food_name.strip():
+        raise ValueError("The food name must be a non-empty string.")
+
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The provided data is not a pandas DataFrame.")
 
     try: 
         selected_food = filter_food_by_exact_name(food_name, data)
@@ -70,16 +75,19 @@ def nutrition_breakdown(food_name: str, data: pd.DataFrame, nutrients: list = No
         return pd.Series()
 
 #function for calculating the nutrient values for a given weight of the selected food with an exact match.
-def calculate_nutrients(food_name: str, data: pd.DataFrame, weight: float, nutrients: list = None):
+def calculate_nutrients(food_name: str, data: pd.DataFrame, weight_input: str, nutrients: list = None):
     try:
+        weight = float(weight_input)
         if weight <= 0:
             raise ValueError("Weight must be a positive number greater than zero.")
         nutrient_values = nutrition_breakdown(food_name, data, nutrients)
         if nutrient_values.empty:
             raise ValueError("No valid nutrient data found for the specified food.")
+
+        nutrient_values = pd.to_numeric(nutrient_values, errors='coerce')
         nutrient_values_per_weight = (nutrient_values * weight) / 100
         return nutrient_values_per_weight
-    
+
     except ValueError as e:
         print(f"ValueError: {e}")
         return pd.Series()
@@ -88,10 +96,17 @@ def calculate_nutrients(food_name: str, data: pd.DataFrame, weight: float, nutri
         return pd.Series()    
     
 #function for filtering the results based on a high and low value for a nutrient
-def nutrition_range_filter(nutrient_input: str, nutrient_min: float, nutrient_max: float, data: pd.DataFrame):
+def nutrition_range_filter(nutrient_input: str, nutrient_min_input: str, nutrient_max_input: str, data: pd.DataFrame):
+    if not isinstance(nutrient_input, str) or nutrient_input == '':
+        raise ValueError("The nutrient name must be a non-empty string.")
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The provided data is not a pandas DataFrame.")
+
     food_arr = []
 
     try:
+        nutrient_min = float(nutrient_min_input)
+        nutrient_max = float(nutrient_max_input)
         nutrient = nutrient_input.lower().title()
         column = data[nutrient]
         for entry in column:
@@ -118,7 +133,7 @@ def nutrition_range_filter(nutrient_input: str, nutrient_min: float, nutrient_ma
         print(f"TypeError: {e}")
         return food_arr
 
-#function that gives the high and low values for the levels for the nutrition level filter
+# Function that gives the high and low values for the levels for the nutrition level filter
 def nutrition_filter_min_max(level: str):
     p_low = 0
     p_high = 0
@@ -146,9 +161,15 @@ def nutrition_filter_min_max(level: str):
         return p_low, p_high
 
 
-
 # function for filtering the results based the weight of a specific nutrient in 100g of the food.
 def nutrition_level_filter(nutrient_input: str, nutrient_level: str, data: pd.DataFrame):
+    if not isinstance(nutrient_input, str) or nutrient_input == '':
+        raise ValueError("The nutrient must be a non-empty string.")
+    if not isinstance(nutrient_level, str) or nutrient_level == '':
+        raise ValueError("The nutrient level must be a non-empty string.")
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The provided data is not a pandas DataFrame.")
+
     food_arr = []
 
     try:
