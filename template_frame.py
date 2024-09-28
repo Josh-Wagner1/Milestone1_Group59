@@ -187,9 +187,11 @@ class MyFrame2 ( wx.Frame ):
         self.m_NutritionFilter.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
         self.m_NutritionFilter.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
         self.m_NutritionFilter.Hide()
+        self.m_NutritionFilter.SetMaxSize( wx.Size( 700,400 ) )
 
-        self.m_NutritionRange = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_NutritionRange = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,300 ), wx.TAB_TRAVERSAL )
         self.m_NutritionRange.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
+        self.m_NutritionRange.SetMaxSize( wx.Size( 700,300 ) )
 
         bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
@@ -304,11 +306,13 @@ class MyFrame2 ( wx.Frame ):
         self.m_gridNR.SetMargins( 0, 0 )
 
         # Columns
+        self.m_gridNR.AutoSizeColumns()
         self.m_gridNR.EnableDragColMove( False )
         self.m_gridNR.EnableDragColSize( True )
         self.m_gridNR.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
+        self.m_gridNR.AutoSizeRows()
         self.m_gridNR.EnableDragRowSize( True )
         self.m_gridNR.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -316,17 +320,20 @@ class MyFrame2 ( wx.Frame ):
 
         # Cell Defaults
         self.m_gridNR.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        self.m_gridNR.SetMaxSize( wx.Size( 100,180 ) )
+
         bSizer13.Add( self.m_gridNR, 0, wx.ALL, 5 )
 
 
-        bSizer8.Add( bSizer13, 1, wx.EXPAND, 5 )
+        bSizer8.Add( bSizer13, 0, wx.EXPAND, 5 )
 
 
         self.m_NutritionRange.SetSizer( bSizer8 )
         self.m_NutritionRange.Layout()
-        bSizer8.Fit( self.m_NutritionRange )
         self.m_NutritionFilter.AddPage( self.m_NutritionRange, _(u"Nutrition Range"), True )
-        self.m_NutritionLevel = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_NutritionLevel = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,300 ), wx.TAB_TRAVERSAL )
+        self.m_NutritionLevel.SetMaxSize( wx.Size( 700,300 ) )
+
         bSizer14 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -423,11 +430,13 @@ class MyFrame2 ( wx.Frame ):
         self.m_gridNL.SetMargins( 0, 0 )
 
         # Columns
+        self.m_gridNL.AutoSizeColumns()
         self.m_gridNL.EnableDragColMove( False )
         self.m_gridNL.EnableDragColSize( True )
         self.m_gridNL.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
+        self.m_gridNL.AutoSizeRows()
         self.m_gridNL.EnableDragRowSize( True )
         self.m_gridNL.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -435,15 +444,16 @@ class MyFrame2 ( wx.Frame ):
 
         # Cell Defaults
         self.m_gridNL.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        self.m_gridNL.SetMaxSize( wx.Size( 100,180 ) )
+
         bSizer19.Add( self.m_gridNL, 0, wx.ALL, 5 )
 
 
-        bSizer14.Add( bSizer19, 1, wx.EXPAND, 5 )
+        bSizer14.Add( bSizer19, 0, wx.EXPAND, 5 )
 
 
         self.m_NutritionLevel.SetSizer( bSizer14 )
         self.m_NutritionLevel.Layout()
-        bSizer14.Fit( self.m_NutritionLevel )
         self.m_NutritionFilter.AddPage( self.m_NutritionLevel, _(u"Nutrition Level"), False )
 
         bSizer4.Add( self.m_NutritionFilter, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )

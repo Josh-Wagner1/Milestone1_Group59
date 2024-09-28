@@ -33,6 +33,10 @@ class DTable(wx.grid.GridTableBase):
     def GetValue(self, row, col):
         return self.data.iloc[row, col]
 
+    # Explains itself
+    def SetValue(self, row, col, value):
+        self.data.iloc[row, col] = value
+
     # Used to retrieve and display the column names
     def GetColLabelValue(self, col):
         return self.data.columns[col]
@@ -75,9 +79,6 @@ class MainFrame(MFrame):
         self.m_staticText6.SetLabel("Nutrition Filter")
         self.Layout()
         self.CurrPanel.SetPosition((142, 129))
-
-        # Create grid
-
         self.m_NutritionFilter.Show()
 
     def f_OpenFS( self, event ):
@@ -107,6 +108,43 @@ class MainFrame(MFrame):
 
         self.CurrPanel.Show()
 
+    def f_setColumns(self, table):
+        table.SetColLabelValue(0, "food")
+        table.SetColLabelValue(1, "Caloric Value")
+        table.SetColLabelValue(2, "Fat")
+        table.SetColLabelValue(3, "Saturated Fats")
+        table.SetColLabelValue(4, "Monounsaturated Fats")
+        table.SetColLabelValue(5, "Polyunsaturated Fats")
+        table.SetColLabelValue(6, "Carbohydrates")
+        table.SetColLabelValue(7, "Sugars")
+        table.SetColLabelValue(8, "Protein")
+        table.SetColLabelValue(9, "Dietary Fibre")
+        table.SetColLabelValue(10, "Cholesterol")
+        table.SetColLabelValue(11, "Sodium")
+        table.SetColLabelValue(12, "Water")
+        table.SetColLabelValue(13, "Vitamin A")
+        table.SetColLabelValue(14, "Vitamin B1")
+        table.SetColLabelValue(15, "Vitamin B11")
+        table.SetColLabelValue(16, "Vitamin B12")
+        table.SetColLabelValue(17, "Vitamin B2")
+        table.SetColLabelValue(18, "Vitamin B3")
+        table.SetColLabelValue(19, "Vitamin B5")
+        table.SetColLabelValue(20, "Vitamin B6")
+        table.SetColLabelValue(21, "Vitamin C")
+        table.SetColLabelValue(22, "Vitamin D")
+        table.SetColLabelValue(23, "Vitamin E")
+        table.SetColLabelValue(24, "Vitamin K")
+        table.SetColLabelValue(25, "Calcium")
+        table.SetColLabelValue(26, "Copper")
+        table.SetColLabelValue(27, "Iron")
+        table.SetColLabelValue(28, "Magnesium")
+        table.SetColLabelValue(29, "Manganese")
+        table.SetColLabelValue(30, "Phosphorus")
+        table.SetColLabelValue(31, "Potassium")
+        table.SetColLabelValue(32, "Selenium")
+        table.SetColLabelValue(33, "Zinc")
+        table.SetColLabelValue(34, "Nutrition Density")
+
     def f_NRFilter( self, event ):
         nutrient_input = self.m_txtNR.GetValue()
         min_input = self.m_txtMin.GetValue()
@@ -117,7 +155,8 @@ class MainFrame(MFrame):
 
         result_table = DTable(search_result)
         self.m_gridNR.ClearGrid()
-        self.m_gridNR.SetTable(result_table, True)
+        self.m_gridNR.SetTable(result_table, takeOwnership=True)
+        self.f_setColumns(self.m_gridNR)
         self.Layout()
 
     def f_NLFilter(self, event):
@@ -130,17 +169,18 @@ class MainFrame(MFrame):
 
         self.m_gridNL.ClearGrid()
         self.m_gridNL.SetTable(result_table, takeOwnership=True)
+        self.f_setColumns(self.m_gridNL)
         self.Layout()
 
     def f_FSSearch( self, event ):
         search_input = self.m_txtFS.GetValue()
-        data = self.table.data
+        df = self.table.data
 
-        search_result = filter_food_by_name(search_input.strip(), data)
+        search_result = filter_food_by_name(search_input.strip(), df)
         table = DTable(search_result)
 
         self.m_gridFS.ClearGrid()
-        self.m_gridFS.SetTable(table,takeOwnership=True)
+        self.m_gridFS.SetTable(table, takeOwnership=True)
         self.m_gridFS.AutoSize()
         self.Layout()
 
