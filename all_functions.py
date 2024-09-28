@@ -70,12 +70,13 @@ def nutrition_breakdown(food_name: str, data: pd.DataFrame, nutrients: list = No
     except ValueError as e:
         print(f"ValueError: {e}")
         return pd.Series()
-    except TypeError as e:
-        print(f"TypeError: {e}")
-        return pd.Series()
 
 #function for calculating the nutrient values for a given weight of the selected food with an exact match.
 def calculate_nutrients(food_name: str, data: pd.DataFrame, weight_input: str, nutrients: list = None):
+    
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The provided data is not a pandas DataFrame.")
+    
     try:
         weight = float(weight_input)
         if weight <= 0:
@@ -91,9 +92,6 @@ def calculate_nutrients(food_name: str, data: pd.DataFrame, weight_input: str, n
     except ValueError as e:
         print(f"ValueError: {e}")
         return pd.Series()
-    except TypeError as e:
-        print(f"TypeError: {e}")
-        return pd.Series()    
     
 #function for filtering the results based on a high and low value for a nutrient
 def nutrition_range_filter(nutrient_input: str, nutrient_min_input: str, nutrient_max_input: str, data: pd.DataFrame):
@@ -110,27 +108,20 @@ def nutrition_range_filter(nutrient_input: str, nutrient_min_input: str, nutrien
         nutrient = nutrient_input.lower().title()
         column = data[nutrient]
         for entry in column:
-            try:
-                if nutrient_min <= float(entry) <= nutrient_max:
-                    food_arr.append(True)
-                else:
-                    food_arr.append(False)
-            except ValueError:
+            if nutrient_min <= float(entry) <= nutrient_max:
+                food_arr.append(True)
+            else:
                 food_arr.append(False)
-
         if len(food_arr) == 0:
             raise ValueError("No valid foods match the specified inputs.")
 
         return food_arr
 
     except KeyError as e:
-        print(f"ValueError: {e}")
+        print(f"KeyError: {e}")
         return food_arr
     except ValueError as e:
         print(f"ValueError: {e}")
-        return food_arr
-    except TypeError as e:
-        print(f"TypeError: {e}")
         return food_arr
 
 # Function that gives the high and low values for the levels for the nutrition level filter
@@ -156,10 +147,6 @@ def nutrition_filter_min_max(level: str):
     except ValueError as e:
         print(f"ValueError: {e}")
         return p_low, p_high
-    except TypeError as e:
-        print(f"TypeError: {e}")
-        return p_low, p_high
-
 
 # function for filtering the results based the weight of a specific nutrient in 100g of the food.
 def nutrition_level_filter(nutrient_input: str, nutrient_level: str, data: pd.DataFrame):
@@ -183,14 +170,10 @@ def nutrition_level_filter(nutrient_input: str, nutrient_level: str, data: pd.Da
         column = data[nutrient]
 
         for entry in column:
-            try:
-                if p_low <= float(entry) < p_high:
-                    food_arr.append(True)
-                else:
-                    food_arr.append(False)
-            except ValueError:
-                food_arr.append(False)
-
+            if p_low <= float(entry) < p_high:
+                food_arr.append(True)
+            else:
+                food_arr.append(False)    
         if len(food_arr) == 0:
             raise ValueError("No valid foods match the specified inputs.")
 
@@ -201,7 +184,4 @@ def nutrition_level_filter(nutrient_input: str, nutrient_level: str, data: pd.Da
         return food_arr
     except ValueError as e:
         print(f"ValueError: {e}")
-        return food_arr
-    except TypeError as e:
-        print(f"TypeError: {e}")
         return food_arr
