@@ -374,78 +374,53 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 
 #### 3.2.3 Detailed Design
-**ReadLines**
 
-START\
-Open Food_Nutrition_Dataset.csv for reading\
-Initialise array CSV_Arr[][]
-
-For each Line in Food_Nutrition_Dataset.csv\
-&nbsp;&nbsp;&nbsp;&nbsp;Line = Read line of “Food_Nutrition_Dataset.csv”\
-&nbsp;&nbsp;&nbsp;&nbsp;Split Line by comma delimiter\
-&nbsp;&nbsp;&nbsp;&nbsp;Insert line into one line of CSV_Arr[][]\
-End For
-
-Close Food_Nutrition_Dataset.csv\
-Return CSV_Arr[][]\
-END
-
+**load_data** \
+<span style="color:red">def load_data(file_path: str): \
+try: \
+df = pd.read_csv(file_path) \
+except FileNotFoundError: \
+raise FileNotFoundError("File not found.") \
+except pd.errors.EmptyDataError: \
+raise ValueError("No data found in the file.") \
+return df \
 \
-**Search_All_Foods**
-
-START\
-Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
-Initialise string User_Food_Input = system.readtextinput()\
-Initialise array Food_Arr[][]\
-Initialise int i = 0
-
-For each index i from 0 to CSV_Arr[][].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For
-
-Return Food_Arr[][]\
-END
-
+**filter_food_by_name** \
+def filter_food_by_name(food_name: str, data: pd.DataFrame): \ 
+if not isinstance(data, pd.DataFrame): \
+raise TypeError("The provided data is not a pandas DataFrame.") \
+if not isinstance(food_name, str) or not food_name.strip(): \
+raise ValueError("The food name must be a non-empty string.") \ 
+food_column = data['food'] \
+filtered_data = data[food_column.str.contains(food_name, case=False, na=False)] \ 
+if filtered_data.empty: \
+raise ValueError(f"No food item found for '{food_name}' in the database.")\
+return filtered_data  
 \
-**Search_Single_Food**
-
-START\
-Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
-initialise string User_Food_Input = system.readtextinput()\
-Initialise array SFood_Arr[]\
-Initialise int i = 0
-
-For each index i from 0 to CSV_Arr[][].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][0] is equal to User_Food_Input\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to SFood_Arr[]\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Return SFood_Arr[]\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For
-
-Return -1\
-END
-
-
+**filter_food_by_exact_name** \
+def filter_food_by_exact_name(food_name: str, data: pd.DataFrame): \
+if not isinstance(data, pd.DataFrame): \
+raise TypeError("The provided data is not a pandas DataFrame.") \
+if not isinstance(food_name, str) or not food_name.strip(): \
+raise ValueError("The food name must be a non-empty string.") \
+filtered_data = data[data['food'].str.lower() == food_name.lower()] \
+if filtered_data.empty: \
+raise ValueError(f"No food item found for '{food_name}' in the database.") \
+if len(filtered_data) > 1: \
+raise ValueError(f"Multiple entries found for '{food_name}'. Please provide a unique food name.") \
+return filtered_data 
 \
-**Nutrition_Breakdown**
-
-START\
-initialise string User_Food_Input = system.readtextinput()\
-initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
-initialise int i = 0
-
-For each index i from 0 to SFood_Arr[].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] to visible table\
-&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to pie chat\
-&nbsp;&nbsp;&nbsp;&nbsp;Add SFood_Arr[i] value to bar graph\
-End For
-
-Return pie chart, bar graph\
-END
+\
+**nutrition_breakdown** \
+def nutrition_breakdown(food_name: str, data: pd.DataFrame, nutrients: list = None): \
+if not isinstance(food_name, str) or not food_name.strip(): \
+raise ValueError("The food name must be a non-empty string.") \
+if not isinstance(data, pd.DataFrame): \
+raise TypeError("The provided data is not a pandas DataFrame.") \
+food_data = filter_food_by_exact_name(food_name, data)\
+if nutrients:\
+food_data = food_data[nutrients]\
+return food_data
 
 \
 **Weight_Calculator**
