@@ -183,13 +183,15 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer4.Add( bSizer7, 0, wx.EXPAND, 5 )
 
-        self.m_NutritionFilter = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,400 ), 0 )
+        self.m_NutritionFilter = wx.Notebook( self, wx.ID_ANY, wx.Point( 142,129 ), wx.Size( 700,400 ), 0 )
         self.m_NutritionFilter.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
         self.m_NutritionFilter.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
         self.m_NutritionFilter.Hide()
+        self.m_NutritionFilter.SetMaxSize( wx.Size( 700,400 ) )
 
-        self.m_NutritionRange = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_NutritionRange = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,300 ), wx.TAB_TRAVERSAL )
         self.m_NutritionRange.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
+        self.m_NutritionRange.SetMaxSize( wx.Size( 700,300 ) )
 
         bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
@@ -201,7 +203,7 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer9.Add( ( 75, 0), 0, wx.EXPAND, 5 )
 
-        self.m_staticText7 = wx.StaticText( self.m_NutritionRange, wx.ID_ANY, _(u"Food"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText7 = wx.StaticText( self.m_NutritionRange, wx.ID_ANY, _(u"Nutrient"), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText7.Wrap( -1 )
 
         self.m_staticText7.SetFont( wx.Font( 11, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
@@ -217,11 +219,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer10.Add( ( 75, 0), 1, wx.EXPAND, 5 )
 
-        m_cbNRChoices = []
-        self.m_cbNR = wx.ComboBox( self.m_NutritionRange, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), m_cbNRChoices, 0 )
-        self.m_cbNR.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+        self.m_txtNR = wx.TextCtrl( self.m_NutritionRange, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), 0 )
+        self.m_txtNR.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-        bSizer10.Add( self.m_cbNR, 0, wx.ALL, 5 )
+        bSizer10.Add( self.m_txtNR, 0, wx.ALL, 5 )
 
 
         bSizer10.Add( ( 50, 0), 1, wx.EXPAND, 5 )
@@ -295,39 +296,44 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer13.Add( ( 75, 0), 0, wx.EXPAND, 5 )
 
-        self.m_grid1 = wx.grid.Grid( self.m_NutritionRange, wx.ID_ANY, wx.DefaultPosition, wx.Size( 550,180 ), 0 )
+        self.m_gridNR = wx.grid.Grid( self.m_NutritionRange, wx.ID_ANY, wx.DefaultPosition, wx.Size( 550,180 ), 0 )
 
         # Grid
-        self.m_grid1.CreateGrid( 10, 6 )
-        self.m_grid1.EnableEditing( True )
-        self.m_grid1.EnableGridLines( True )
-        self.m_grid1.EnableDragGridSize( False )
-        self.m_grid1.SetMargins( 0, 0 )
+        self.m_gridNR.CreateGrid( 10, 6 )
+        self.m_gridNR.EnableEditing( True )
+        self.m_gridNR.EnableGridLines( True )
+        self.m_gridNR.EnableDragGridSize( False )
+        self.m_gridNR.SetMargins( 0, 0 )
 
         # Columns
-        self.m_grid1.EnableDragColMove( False )
-        self.m_grid1.EnableDragColSize( True )
-        self.m_grid1.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+        self.m_gridNR.AutoSizeColumns()
+        self.m_gridNR.EnableDragColMove( False )
+        self.m_gridNR.EnableDragColSize( True )
+        self.m_gridNR.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
-        self.m_grid1.EnableDragRowSize( True )
-        self.m_grid1.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+        self.m_gridNR.AutoSizeRows()
+        self.m_gridNR.EnableDragRowSize( True )
+        self.m_gridNR.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Label Appearance
 
         # Cell Defaults
-        self.m_grid1.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-        bSizer13.Add( self.m_grid1, 0, wx.ALL, 5 )
+        self.m_gridNR.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        self.m_gridNR.SetMaxSize( wx.Size( 100,180 ) )
+
+        bSizer13.Add( self.m_gridNR, 0, wx.ALL, 5 )
 
 
-        bSizer8.Add( bSizer13, 1, wx.EXPAND, 5 )
+        bSizer8.Add( bSizer13, 0, wx.EXPAND, 5 )
 
 
         self.m_NutritionRange.SetSizer( bSizer8 )
         self.m_NutritionRange.Layout()
-        bSizer8.Fit( self.m_NutritionRange )
-        self.m_NutritionFilter.AddPage( self.m_NutritionRange, _(u"Nutrition Range"), False )
-        self.m_NutritionLevel = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_NutritionFilter.AddPage( self.m_NutritionRange, _(u"Nutrition Range"), True )
+        self.m_NutritionLevel = wx.Panel( self.m_NutritionFilter, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,300 ), wx.TAB_TRAVERSAL )
+        self.m_NutritionLevel.SetMaxSize( wx.Size( 700,300 ) )
+
         bSizer14 = wx.BoxSizer( wx.VERTICAL )
 
 
@@ -338,7 +344,7 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer15.Add( ( 75, 0), 0, wx.EXPAND, 5 )
 
-        self.m_staticText10 = wx.StaticText( self.m_NutritionLevel, wx.ID_ANY, _(u"Food"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText10 = wx.StaticText( self.m_NutritionLevel, wx.ID_ANY, _(u"Nutrient"), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText10.Wrap( -1 )
 
         self.m_staticText10.SetFont( wx.Font( 11, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
@@ -354,11 +360,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer16.Add( ( 75, 0), 1, wx.EXPAND, 5 )
 
-        m_cbNLChoices = []
-        self.m_cbNL = wx.ComboBox( self.m_NutritionLevel, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), m_cbNLChoices, 0 )
-        self.m_cbNL.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+        self.m_txtNL = wx.TextCtrl( self.m_NutritionLevel, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), 0 )
+        self.m_txtNL.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-        bSizer16.Add( self.m_cbNL, 0, wx.ALL, 5 )
+        bSizer16.Add( self.m_txtNL, 0, wx.ALL, 5 )
 
 
         bSizer16.Add( ( 50, 0), 1, wx.EXPAND, 5 )
@@ -425,11 +430,13 @@ class MyFrame2 ( wx.Frame ):
         self.m_gridNL.SetMargins( 0, 0 )
 
         # Columns
+        self.m_gridNL.AutoSizeColumns()
         self.m_gridNL.EnableDragColMove( False )
         self.m_gridNL.EnableDragColSize( True )
         self.m_gridNL.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
+        self.m_gridNL.AutoSizeRows()
         self.m_gridNL.EnableDragRowSize( True )
         self.m_gridNL.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -437,20 +444,21 @@ class MyFrame2 ( wx.Frame ):
 
         # Cell Defaults
         self.m_gridNL.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        self.m_gridNL.SetMaxSize( wx.Size( 100,180 ) )
+
         bSizer19.Add( self.m_gridNL, 0, wx.ALL, 5 )
 
 
-        bSizer14.Add( bSizer19, 1, wx.EXPAND, 5 )
+        bSizer14.Add( bSizer19, 0, wx.EXPAND, 5 )
 
 
         self.m_NutritionLevel.SetSizer( bSizer14 )
         self.m_NutritionLevel.Layout()
-        bSizer14.Fit( self.m_NutritionLevel )
-        self.m_NutritionFilter.AddPage( self.m_NutritionLevel, _(u"Nutrition Level"), True )
+        self.m_NutritionFilter.AddPage( self.m_NutritionLevel, _(u"Nutrition Level"), False )
 
         bSizer4.Add( self.m_NutritionFilter, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.m_FoodSearch = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
+        self.m_FoodSearch = wx.Panel( self, wx.ID_ANY, wx.Point( 142,129 ), wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
         self.m_FoodSearch.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
         self.m_FoodSearch.Hide()
         self.m_FoodSearch.SetMaxSize( wx.Size( 700,400 ) )
@@ -481,11 +489,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer22.Add( ( 75, 0), 1, wx.EXPAND, 5 )
 
-        m_cbFSChoices = []
-        self.m_cbFS = wx.ComboBox( self.m_FoodSearch, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), m_cbFSChoices, 0 )
-        self.m_cbFS.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+        self.m_txtFS = wx.TextCtrl( self.m_FoodSearch, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), 0 )
+        self.m_txtFS.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-        bSizer22.Add( self.m_cbFS, 0, wx.ALL, 5 )
+        bSizer22.Add( self.m_txtFS, 0, wx.ALL, 5 )
 
 
         bSizer22.Add( ( 50, 0), 1, wx.EXPAND, 5 )
@@ -540,7 +547,7 @@ class MyFrame2 ( wx.Frame ):
         self.m_FoodSearch.Layout()
         bSizer4.Add( self.m_FoodSearch, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.m_NutritionBreakdown = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
+        self.m_NutritionBreakdown = wx.Panel( self, wx.ID_ANY, wx.Point( 142,129 ), wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
         self.m_NutritionBreakdown.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
         self.m_NutritionBreakdown.Hide()
 
@@ -570,11 +577,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer26.Add( ( 75, 0), 1, wx.EXPAND, 5 )
 
-        m_cbNBChoices = []
-        self.m_cbNB = wx.ComboBox( self.m_NutritionBreakdown, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), m_cbNBChoices, 0 )
-        self.m_cbNB.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+        self.m_txtNB = wx.TextCtrl( self.m_NutritionBreakdown, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), 0 )
+        self.m_txtNB.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-        bSizer26.Add( self.m_cbNB, 0, wx.ALL, 5 )
+        bSizer26.Add( self.m_txtNB, 0, wx.ALL, 5 )
 
 
         bSizer26.Add( ( 50, 0), 1, wx.EXPAND, 5 )
@@ -591,11 +597,8 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer27 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_NBGraph = wx.Panel( self.m_NutritionBreakdown, wx.ID_ANY, wx.DefaultPosition, wx.Size( 300,300 ), wx.TAB_TRAVERSAL )
+        self.m_NBGraph = wx.Panel( self.m_NutritionBreakdown, wx.ID_ANY, wx.DefaultPosition, wx.Size( 600,300 ), wx.TAB_TRAVERSAL )
         bSizer27.Add( self.m_NBGraph, 1, wx.EXPAND |wx.ALL, 5 )
-
-        self.m_PieChart = wx.Panel( self.m_NutritionBreakdown, wx.ID_ANY, wx.DefaultPosition, wx.Size( 300,300 ), wx.TAB_TRAVERSAL )
-        bSizer27.Add( self.m_PieChart, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         bSizer24.Add( bSizer27, 1, wx.EXPAND, 5 )
@@ -605,7 +608,7 @@ class MyFrame2 ( wx.Frame ):
         self.m_NutritionBreakdown.Layout()
         bSizer4.Add( self.m_NutritionBreakdown, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.m_WeightCalculator = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
+        self.m_WeightCalculator = wx.Panel( self, wx.ID_ANY, wx.Point( 142,129 ), wx.Size( 700,400 ), wx.TAB_TRAVERSAL )
         self.m_WeightCalculator.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
         self.m_WeightCalculator.Hide()
 
@@ -635,11 +638,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer30.Add( ( 75, 0), 1, wx.EXPAND, 5 )
 
-        m_cbWCChoices = []
-        self.m_cbWC = wx.ComboBox( self.m_WeightCalculator, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), m_cbWCChoices, 0 )
-        self.m_cbWC.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+        self.m_txtWC = wx.TextCtrl( self.m_WeightCalculator, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 300,-1 ), 0 )
+        self.m_txtWC.SetFont( wx.Font( 14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-        bSizer30.Add( self.m_cbWC, 0, wx.ALL, 5 )
+        bSizer30.Add( self.m_txtWC, 0, wx.ALL, 5 )
 
 
         bSizer30.Add( ( 50, 0), 1, wx.EXPAND, 5 )
@@ -691,10 +693,10 @@ class MyFrame2 ( wx.Frame ):
 
         bSizer33 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_gridWC = wx.grid.Grid( self.m_WeightCalculator, wx.ID_ANY, wx.DefaultPosition, wx.Size( 300,300 ), 0 )
+        self.m_gridWC = wx.grid.Grid( self.m_WeightCalculator, wx.ID_ANY, wx.DefaultPosition, wx.Size( 600,300 ), 0 )
 
         # Grid
-        self.m_gridWC.CreateGrid( 10, 6 )
+        self.m_gridWC.CreateGrid( 34, 2 )
         self.m_gridWC.EnableEditing( True )
         self.m_gridWC.EnableGridLines( True )
         self.m_gridWC.EnableDragGridSize( False )
@@ -714,9 +716,6 @@ class MyFrame2 ( wx.Frame ):
         # Cell Defaults
         self.m_gridWC.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
         bSizer33.Add( self.m_gridWC, 0, wx.ALL, 5 )
-
-        self.m_WCGraph = wx.Panel( self.m_WeightCalculator, wx.ID_ANY, wx.DefaultPosition, wx.Size( 300,300 ), wx.TAB_TRAVERSAL )
-        bSizer33.Add( self.m_WCGraph, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         bSizer28.Add( bSizer33, 1, wx.EXPAND, 5 )
