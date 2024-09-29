@@ -53,7 +53,7 @@ def test_filter_food_by_name_not_found(food_data):
     with pytest.raises(ValueError, match="No food item found for 'nonexistentfood' in the database."):
         filter_food_by_name('nonexistentfood', food_data)
 
-def test_filter_food_by_name_invalid_input_type(food_data):
+def test_filter_food_by_name_invalid_input_type():
     """Test error handling for invalid data input (not a DataFrame)."""
     with pytest.raises(TypeError):
         filter_food_by_name('cheese', 'invalid_data')
