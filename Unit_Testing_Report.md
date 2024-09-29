@@ -655,14 +655,14 @@ def test_nutrition_range_filter_empty_nutrient_input(food_data):
 
 ```
 
-- **6) Empty Column**
+- **7) Empty Column**
 
 | **Invalid Input**             | **Expected Output** |
 | ----------------------------- | ------------------- |
 | `test_nutrition_range_filter_empty_column()` | `Empty Pandas Series`  |
 
 
-- **6) Code for the Test Function**
+- **7) Code for the Test Function**
 
 ```python
 def test_nutrition_range_filter_empty_column():
