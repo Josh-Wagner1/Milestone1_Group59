@@ -665,9 +665,11 @@ The wireframes correspond to different screens in the user journey as described 
 - **User Flow**: Simple decision-making process at the beginning, either to exit the app or proceed to the main interface.
 - **Justification**: This screen minimizes decision fatigue by offering only two key choices, streamlining the user’s first interaction with the application.
 
-##### **Wireframe 2: Nutrition Filter**
+##### **Updated Wireframe 2: Nutrition Filter**
 
-![Nutrition Filter](./NutritionFilterWireframe.png)
+![Nutrition Filter](./NutritionFilterWireframe1.png)
+![Nutrition Filter](./NutritionFilterWireframe2.png)
+<span style="color:red">**Image Updated to have "nutrition range" and "nutrition level" sections navigated to via tabs on the nutrition filer screen**
 
 - **Visual Components**:
     - Two filtering sections: one for "Nutrition Range" and one for "Nutrition Level."
@@ -695,9 +697,10 @@ The wireframes correspond to different screens in the user journey as described 
 - **User Flow**: A simple search leads to clear and actionable next steps, allowing users to drill down into the data if needed.
 - **Justification**: This wireframe provides a straightforward way for users to search for a specific food, see its data, and perform advanced actions like breakdowns and calculations, enhancing usability.
 
-##### **Wireframe 4: Nutrition Breakdown**
+##### **Updated Wireframe 4: Nutrition Breakdown**
 
 ![Nutrition Breakdown](./NutritionBreakdownWireframe.png)
+<span style="color:red">**Image Updated to remove the food selection input, leaving only the text input**
 
 - **Visual Components**:
     - Input field for food.
@@ -711,13 +714,13 @@ The wireframes correspond to different screens in the user journey as described 
 ##### **Wireframe 5: Weight Calculator**
 
 ![Weight Calculator](./WeightCalculatorWireframe.png)
-
+<span style="color:red">**Removed the graphical display of data, leaving only table**
 - **Visual Components**:
     - Input field for food and weight.
     - Results table with calculated values based on the input weight.
 - **Functional Justification**:
     - **Weight input**: Allows users to calculate nutritional values based on a specific serving size, providing personalized data.
-    - **Graph and results table**: These visually and numerically display the calculated values, ensuring users get both a detailed and high-level view.
+    - <span style="color:red">**Results table**: These numerically display the calculated values, ensuring users get a detailed view of the data.
 - **User Flow**: Users input food and weight, then receive tailored nutritional data.
 - **Justification**: This wireframe adds personalization by allowing users to adjust serving sizes and see the nutritional impact. It’s especially useful for users tracking their intake or tailoring it to specific needs.
 
