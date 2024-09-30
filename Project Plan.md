@@ -243,6 +243,7 @@ Define the activities required for your project based on the WBS, and assign res
 
 ## 4. Gantt Chart
 
-![Gantt Chart](./Gantt_chart.png)
+![Gantt Chart](./Gantt chart_updated.png)
+<span style="color:red">**Update gantt chart to reflect completion of the project**
 
 
