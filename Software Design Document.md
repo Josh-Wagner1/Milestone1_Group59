@@ -251,249 +251,333 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 ### 3.2	System Components
 
-#### 3.2.1 Functions
-**ReadLines**
-* Description: Read all lines of the Food_Nutrition_Dataset.csv and store it as an array.
-* Input Parameters: 
-  * Food_Nutrition_Dataset.csv
-* Return Value: CSV_Arr[][] --> A 2D array containing all the records of the Food_Nutrition_Dataset.csv.
-* Side Effects: Data has to be re-initiated if the software is re-openned.
-
-**Search_All_Foods**
-* Description: Search all rows in the csv and retrieve the ones where the “food” element matches all or part of the user’s string input.  
-* Input Parameters: 
-  * User_Food_Input --> A string that stores the raw user input from the search bar.
-* Return Value: Food_Arr[][] --> A 2D array containing all the records that match or contain the string in User_Food_Input
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
-
-**Search_Single_Food**
-* Description: The user selects a food in which the system retrieves its nutritional information of. Its used to create pie charts and bar graphs for the Nutrition_Breakdown feature and calculations for the Weight_Calculator.
-* Input Parameters: 
-	* User_Food_Input --> A string that stores the raw user input.
-* Return Value: SFood_Arr[] --> A 1D array containing all the entities that belong to the food specified User_Food_Input but this is displayed visually with pie charts and bar graphs.
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
-
-**Nutrition_Breakdown**
-* Description: The user selects a food in which the system calls the Retrieve_Single_Food to retrieve its details and create pie charts and bar graphs for the user to view.
-* Input Parameters: 
-  * User_Food_Input --> A string that stores the raw user input from the text box. Used to generate SFood_Arr[] by calling Retrieve_Single_Food.
-* Return Value: SFood_Arr[] displayed visually with pie charts and bar graphs.
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
-
-**Weight_Calculator**
-* Description: The user inputs the name of a food and weight (in g) of the desired portion for the system to calculate and display scaled nutritional information.
-* Input Parameters: 
-* User_Food_Input --> A string that stores the raw user input from the text box. Used to generate SFood_Arr[] by calling Retrieve_Single_Food.
-	* User_Weight_Input --> A floating point value that stores the user input for the weight.
-* Return Value: Calc_Food_Arr[] --> A 1D array containing all the entities that belong to the food specified User_Food_Input and has been scaled based on User_Weight_Input.
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
-
-**Nutrition_Level_Filter**
-* Description: Filter all rows of the csv to only show rows that contain a specific weight range (density) of a nutrient that the user has defined.
-* Input Parameters: 
-	* User_Nutrient_Input --> A string that stores the user’s selected nutrient.
-	* User_Nutrient_Level --> A string that stores the specified nutrient level (Low, Mid or High).
-* Return Value: Food_Arr[][] --> A 2D array containing all the records that meet the User_Nutrient_Level of the specified User_Nutrient_Input.
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
-
-**Nutrition_Range_Filter**
-* Description: Filter all rows of the csv to only show rows that contain a specific level of a nutrient that the user has defined.
-* Input Parameters: 
-  * User_Nutrient_Input --> A string that stores the user’s selected nutrient.
-  * User_Nutrient_Min --> A floating point value that stores the lower bound of the user’s specified range.
-  * User_Nutrient_Max --> A floating point value that stores the upper bound of the user’s specified range.
-* Return Value: Food_Arr[][] --> A 2D array containing all the records that are within the range of User_Nutrient_Min and User_Nutrient_Max of the specified User_Nutrient_Input.
-* Side Effects: All data structures are restored to their default values if the button “Calculate Again” is pressed, it’s re-opened by the main interface or the software is closed.
+#### <span style="color:red"> 3.2.1 Updated Functions
 
 
-#### 3.2.2 Data Structures / Data Sources
-**Food_Nutrition_Dataset.csv**
-* Type: csv file
-* Usage: Contains all the data in comma delimited format.
-* Functions: All except for Weight_Calculator.
+### **1. load_data**
 
-**Line**
-* Type: String
-* Usage: Stores the next line of csv data that needs to be read and stored in CSV_Arr[][].
-* Functions: ReadLines
+- **Description**: Loads the nutritional data from a CSV file into a pandas DataFrame. It ensures error handling for missing or empty files.
+- **Input Parameters**:
+  - file_path (*str*): The path to the CSV file containing the nutritional data.
+- **Return Value**: 
+  - A pandas DataFrame containing the loaded data.
+- **Side Effects**: 
+  - Raises FileNotFoundError if the file is not found or ValueError if the file is empty.
 
-**CSV_Arr[][]**
-* Type: 2D array
-* Usage: A 2D array used to store the contents of the aforementioned Food_Nutrition_Dataset.csv.
-* Functions: All except for Weight_Calculator.
+---
 
-**“i”, “j”**
-* Type: int
-* Usage: Ints used to represent positions in 1D and 2D arrays.
-* Functions: All except for Weight_Calculator.
+### **2. filter_food_by_name**
 
-**User_Food_Input**
-* Type: String
-* Usage: Stores the raw user input of a food item from an editable textbox that is used to define the “food”(s) they want to retrieve and view from the csv.
-* Functions: Search_All_Foods, Search_Single_Food and Weight_Calculator.
+- **Description**: Filters the DataFrame for food items that contain the specified food_name (partial match, case-insensitive).
+- **Input Parameters**:
+  - food_name (*str*): The name or partial name of the food to search for.
+  - data (*pd.DataFrame*): The DataFrame containing the nutritional data.
+- **Return Value**: 
+  - A pandas DataFrame containing foods that match the search criteria.
+- **Side Effects**: 
+  - Raises TypeError if data is not a DataFrame, or ValueError if food_name is not a valid string or if no food items are found.
 
-**User_Nutrient_Input**
-* Type: String
-* Usage: Functions identically to User_Food_Input but it’s designed to store single nutrient type instead of a “food” that the user wants to filter their results by.
-* Functions: Nutrition_Level_Filter and Nutrition_Range_Filter.
+---
 
-**User_Weight_Input**
-* Type: Floating point
-* Usage: Used to store the user defined weight that they want to scale the nutritional information by.
-* Functions: Weight_Calculator
+### **3. filter_food_by_exact_name**
 
-**User_Nutrient_Level**
-* Type: String
-* Usage: Stores the user’s desired “level” of a specific nutrient as “Low”, “Mid” or “High”. It is used by the function to filters through all items in the csv to only show results that match the desired “level”.
-* Functions: Nutrition_Level_Filter
+- **Description**: Filters the DataFrame for food items that exactly match the specified food_name (case-insensitive).
+- **Input Parameters**:
+  - food_name (*str*): The exact name of the food to search for.
+  - data (*pd.DataFrame*): The DataFrame containing the nutritional data.
+- **Return Value**: 
+  - A pandas DataFrame containing the exact matching food item.
+- **Side Effects**: 
+  - Raises TypeError if data is not a DataFrame, or ValueError if food_name is not a valid string or if no exact matches are found.
 
-**User_Nutrient_Min**
-* Type: Floating point
-* Usage: Stores the absolute minimum nutritional value that the user specifies for a specific nutrient. Is used to filter out any food from the results that has the defined nutrient’s value below the min.
-* Functions: Nutrition_Range_Filter
+---
 
-**User_Nutrient_Max**
-* Type: Floating point
-* Usage: Identical to User_Nutrient_Min but is used to define the maximum instead of the minimum and it’s used to filter out any food from the results that has the defined nutrient’s value above the max.
-* Functions: Nutrition_Range_Filter
+### **4. nutrition_breakdown**
 
-**SFood_Arr[]**
-* Type: 1D array
-* Usage: Same as Food_Arr[][] but is designed to only store 1 row of data because it is used in functions that only work with one specific “food” rather than a list of them. 
-* Functions: Search_Single_Food and Weight_Calculator.
+- **Description**: Retrieves the nutritional breakdown for a specific food item. Optionally allows filtering for specific nutrients.
+- **Input Parameters**:
+  - food_name (*str*): The exact name of the food item.
+  - data (*pd.DataFrame*): The DataFrame containing the nutritional data.
+  - nutrients (*list*, optional): A list of specific nutrients to include in the breakdown. Defaults to None.
+- **Return Value**: 
+  - A pandas DataFrame containing the nutritional breakdown of the food item.
+- **Side Effects**: 
+  - Raises ValueError if the food name is invalid or if any nutrient is not found. Returns an empty Series if no valid food item is found.
 
-**Calc_Food_Arr[]**
-* Type: 1D array
-* Usage: Intends to build on Food_Arr[] by storing the results of the Weight_Calculator after the contents of Food_Arr[] have been scaled using User_Weight_Input.
-* Functions: Weight_Calculator
+---
 
-**Food_Arr[][]**
-* Type: 2D Array
-* Usage: It stores the catalogue of results that match the user’s query that is listed on the user interface when the search has been completed.
-* Functions: Search_All_Foods, Nutrition_Level_Filter and Nutrition_Range_Filter.
+### **5. calculate_nutrients**
+
+- **Description**: Calculates the nutritional values for a specified weight of a food item.
+- **Input Parameters**:
+  - food_name (*str*): The exact name of the food item.
+  - weight (*float*): The weight in grams for which to calculate the nutrients.
+  - data (*pd.DataFrame*): The DataFrame containing the nutritional data.
+- **Return Value**: 
+  - A pandas Series containing the scaled nutritional values for the specified weight.
+- **Side Effects**: 
+  - Raises ValueError if the weight is non-positive or if no valid nutrient data is found.
+
+---
+
+### **6. nutrition_range_filter**
+
+-   **Description**: Filters the food data based on a range of values for a given nutrient (i.e., within a minimum and maximum).
+    
+-   **Input Parameters**:
+    
+    -   nutrient_input  (str): The nutrient to filter by.
+    -   nutrient_min_input  (str): The minimum value of the nutrient.
+    -   nutrient_max_input  (str): The maximum value of the nutrient.
+    -   data  (pd.DataFrame): The data to search through.
+-   **Return Value**: Likely returns a DataFrame or a list of food items that match the nutrient range criteria, though it is not fully visible in the snippet.
+    
+-   **Side Effects**: Raises  TypeError  if  data  is not a DataFrame and  ValueError  if inputs for nutrient name, minimum, or maximum are invalid.
+
+---
+
+### **7. nutrition_filter_min_max**
+
+-   **Description**: Returns the minimum and maximum percentage values for a nutrient based on the given level (low, medium, or high).
+    
+-   **Input Parameters**:
+    
+    -   level  (str): The level of nutrient content ("low", "medium", "high").
+-   **Return Value**: Returns two values,  (p_low, p_high), representing the lower and upper bounds for the nutrient level.
+    
+-   **Side Effects**: Raises  ValueError  if an invalid level is provided.
+
+---
+### **8. nutrition_level_filter**
+
+-   **Description**: Filters food items based on the nutrient level (low, medium, or high) for a specific nutrient.
+    
+-   **Input Parameters**:
+    
+    -   nutrient_input  (str): The nutrient to filter by.
+    -   nutrient_level  (str): The desired level of the nutrient ("low", "medium", "high").
+    -   data (pd.DataFrame): The data to search through.
+-   **Return Value**: Returns a list (Boolean values) indicating whether each food item matches the specified nutrient level.
+    
+-   **Side Effects**: Raises  TypeError  if  data  is not a valid DataFrame, and raises  ValueError  or  KeyError  for invalid inputs (e.g., missing nutrient columns).
 
 
-#### 3.2.3 Detailed Design
 
-**load_data** \
-<span style="color:red">def load_data(file_path: str): \
-try: \
-df = pd.read_csv(file_path) \
-except FileNotFoundError: \
-raise FileNotFoundError("File not found.") \
-except pd.errors.EmptyDataError: \
-raise ValueError("No data found in the file.") \
-return df \
-\
+#### <span style="color:red"> 3.2.2 Updated Data Structures / Data Sources
+
+### 1.  **file_path  (str)**
+
+-   **Type**: String
+-   **Usage**:
+    -   Used to specify the file path for loading a CSV file containing the nutritional data.
+    -   The string represents the location of the CSV file on the system.
+-   **Functions**:
+    -   load_data(file_path)
+
+----------
+
+### 2.  **food_name  (str)**
+
+-   **Type**: String
+-   **Usage**:
+    -   Represents the name (either partial or exact) of a food item to search for in the nutritional database.
+    -   Used for searching and filtering food items by name in the DataFrame.
+-   **Functions**:
+    -   filter_food_by_name(food_name, data)
+    -   filter_food_by_exact_name(food_name, data)
+    -   nutrition_breakdown(food_name, data, nutrients)
+    -   calculate_nutrients(food_name, data, weight_input, nutrients)
+
+----------
+
+### 3.  **data  (pd.DataFrame)**
+
+-   **Type**: Pandas DataFrame
+-   **Usage**:
+    -   The primary data structure that contains the comprehensive nutritional food database.
+    -   Stores rows of food items and columns representing attributes (e.g., food name, nutrient values).
+    -   Used for searching, filtering, and retrieving nutritional data.
+-   **Functions**:
+    -   filter_food_by_name(food_name, data)
+    -   filter_food_by_exact_name(food_name, data)
+    -   nutrition_breakdown(food_name, data, nutrients)
+    -   calculate_nutrients(food_name, data, weight_input, nutrients)
+    -   nutrition_range_filter(nutrient_input, nutrient_min_input, nutrient_max_input, data)
+    -   nutrition_level_filter(nutrient_input, nutrient_level, data)
+
+----------
+
+### 4.  **nutrients  (list)**
+
+-   **Type**: List
+-   **Usage**:
+    -   An optional list that specifies which nutrient values to filter or retrieve from the DataFrame.
+    -   Used to narrow down nutrient data to only the specified nutrient columns.
+-   **Functions**:
+    -   nutrition_breakdown(food_name, data, nutrients)
+    -   calculate_nutrients(food_name, data, weight_input, nutrients)
+
+----------
+
+### 5.  **weight_input  (str)**
+
+-   **Type**: String
+-   **Usage**:
+    -   Represents the weight (usually in grams) of the food item to calculate nutrient values for.
+    -   The string is converted to a float to perform calculations.
+-   **Functions**:
+    -   calculate_nutrients(food_name, data, weight_input, nutrients)
+
+----------
+
+### 6.  **nutrient_input  (str)**
+
+-   **Type**: String
+-   **Usage**:
+    -   Represents the name of the nutrient for filtering.
+    -   Used to specify which nutrient column to filter on in the DataFrame.
+-   **Functions**:
+    -   nutrition_range_filter(nutrient_input, nutrient_min_input, nutrient_max_input, data)
+    -   nutrition_level_filter(nutrient_input, nutrient_level, data)
+
+----------
+
+
+#### <span style="color:red"> 3.2.3 Updated Detailed Design
+
+**load_data** 
+
+START\
+FUNCTION load_data(file_path):\
+    TRY:\
+        Load the CSV file from the file_path into a DataFrame (df)\
+    CATCH FileNotFoundError: \
+        Raise "File not found" error \
+    CATCH EmptyDataError: \ 
+        Raise "No data found in the file" error \
+    RETURN the loaded DataFrame (df) \
+END
+
 **filter_food_by_name** \
-def filter_food_by_name(food_name: str, data: pd.DataFrame): \ 
-if not isinstance(data, pd.DataFrame): \
-raise TypeError("The provided data is not a pandas DataFrame.") \
-if not isinstance(food_name, str) or not food_name.strip(): \
-raise ValueError("The food name must be a non-empty string.") \ 
-food_column = data['food'] \
-filtered_data = data[food_column.str.contains(food_name, case=False, na=False)] \ 
-if filtered_data.empty: \
-raise ValueError(f"No food item found for '{food_name}' in the database.")\
-return filtered_data  
+\
+START\
+FUNCTION filter_food_by_name(food_name, data):\
+    IF data is not a DataFrame:\
+        Raise "The provided data is not a DataFrame" error \
+    IF food_name is not a valid non-empty string: \
+        Raise "The food name must be a non-empty string" error \ 
+Search for rows in the DataFrame where the 'food' column contains food_name (case-insensitive) \
+IF no rows are found: \
+Raise "No food item found" error \
+RETURN the filtered DataFrame with matching food items\
+END\
 \
 **filter_food_by_exact_name** \
-def filter_food_by_exact_name(food_name: str, data: pd.DataFrame): \
-if not isinstance(data, pd.DataFrame): \
-raise TypeError("The provided data is not a pandas DataFrame.") \
-if not isinstance(food_name, str) or not food_name.strip(): \
-raise ValueError("The food name must be a non-empty string.") \
-filtered_data = data[data['food'].str.lower() == food_name.lower()] \
-if filtered_data.empty: \
-raise ValueError(f"No food item found for '{food_name}' in the database.") \
-if len(filtered_data) > 1: \
-raise ValueError(f"Multiple entries found for '{food_name}'. Please provide a unique food name.") \
-return filtered_data 
+\
+START \
+Function filter_food_by_exact_name(food_name, data): \
+If data is not a DataFrame: \
+Raise an error saying the input is not a valid DataFrame \
+If food_name is not a valid string or is empty: \
+Raise an error for invalid input \
+Filter the 'food' column of the DataFrame for rows that exactly match the food_name (case-insensitive) \
+If no matches found: \
+Raise an error saying no food items were found \
+If multiple matches found: \
+Raise an error saying there are multiple entries for the food name \
+Return the filtered DataFrame \
+END
 \
 \
 **nutrition_breakdown** \
-def nutrition_breakdown(food_name: str, data: pd.DataFrame, nutrients: list = None): \
-if not isinstance(food_name, str) or not food_name.strip(): \
-raise ValueError("The food name must be a non-empty string.") \
-if not isinstance(data, pd.DataFrame): \
-raise TypeError("The provided data is not a pandas DataFrame.") \
-food_data = filter_food_by_exact_name(food_name, data)\
-if nutrients:\
-food_data = food_data[nutrients]\
-return food_data
-
 \
-**Weight_Calculator**
+START \
+Function nutrition_breakdown(food_name, data, nutrients=None): \
+If food_name is not a valid string or is empty: \
+Raise an error for invalid input \
+If data is not a DataFrame: \
+Raise an error saying the input is not a valid DataFrame \
+Filter the DataFrame using filter_food_by_exact_name to get the food item \
+If nutrients list is provided: \
+Select only the columns of the specific nutrients from the food item \
+Return the nutritional breakdown of the food item \
+END
+\
+\
+**calculate_nutrients**
 
-START
-initialise string User_Food_Input = system.readtextinput()\
-initialise float User_Weight_Input = float(system.readtextinput())\
-initialise array SFood_Arr[] = Search_Single_Food(User_Food_Input)\
-initialise array Calc_Food_Arr[]\
-initialise int i = 0
-
-For each index i from 0 to SFood_Arr[].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;Calc_Food_Arr[i] = SFood_Arr[i] * (User_Weight_Input /100)\
-End For
-
-Return Calc_Food_Arr[]\
+START \
+Function calculate_nutrients(food_name, weight, data): \
+If weight is not a positive number: \
+Raise an error for invalid input \
+If data is not a DataFrame: \
+Raise an error saying the input is not a valid DataFrame \
+Filter the DataFrame using filter_food_by_exact_name to get the food item \
+Scale the nutrient values by (weight / 100) \
+Return the scaled nutrient values \
 END
 
 \
-**Nutrition_Level_Filter**
+**nutrition_range_filter**
 
-START
-Initialise CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
-initialise string User_Nutrient_Input = system.readtextinput()\
-initialise string User_Nutrient_Level = system.readtextinput()\
-initialise array Food_Arr[][]\
-initialise int i = 0\
-initialise int j = 0
+START \
+Function nutrition_range_filter(nutrient, min_val, max_val, data): \
+If data is not a DataFrame:\
+Raise an error saying the input is not a valid DataFrame \
+If nutrient is not a valid string or is empty: \
+Raise an error for invalid input \
+If min_val or max_val are not valid numbers: \
+Raise an error for invalid input \
+Filter the DataFrame to include rows where the nutrient values are between min_val and max_val \
+If no matching foods are found: \
+Raise an error saying no foods are found in the range \
+Return the filtered DataFrame \
 
-While global.CSV_Arr[0][j] is not NULL\
-&nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;j += 1\
-End While
-
-For each index i from 0 to CSV_Arr[][].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] meets level of User_Nutrient_Level\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For
-
-Return Food_Arr[][]\
 END
 
 \
-**Nutrition_Range_Filter**
+**nutrition_filter_min_max**
 
 START
-Initialise array CSV_Arr[][] = Readlines(Food_Nutrition_Dataset.csv)\
-initialise float User_Nutrient_Input = system.readtextinput()\
-initialise float User_Nutrient_Min = float(system.readtextinput())\
-initialise float User_Nutrient_Max = float(system.readtextinput())\
-initialise array Food_Arr[][]\
-initialise int i = 0\
-initialise int j = 0
+Function nutrition_filter_min_max(nutrient, level, data): \
+If data is not a DataFrame:\
+Raise an error saying the input is not a valid DataFrame\
+If nutrient or level is not valid:\
+Raise an error for invalid input\
+Depending on the level:\
+If level is 'low':\
+Filter the DataFrame for foods where the nutrient is in the lower range\
+If level is 'medium': \
+Filter the DataFrame for foods where the nutrient is in the middle range \
+If level is 'high': \
+Filter the DataFrame for foods where the nutrient is in the higher range \
+If no matching foods are found: \ 
+Raise an error saying no foods match the nutrient level \
+Return the filtered DataFrame \
 
-While global.CSV_Arr[0][j] is not NULL\
-&nbsp;&nbsp;&nbsp;&nbsp;If global.CSV_Arr[0][j] contains User_Nutrient_Input
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Break\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;j += 1\
-End While\
-For each index i from 0 to CSV_Arr[][].RowCount() – 1\
-&nbsp;&nbsp;&nbsp;&nbsp;If the element at CSV_Arr[i][j] is greater than User_Nutrient_Min and less than User_Nutrient_Max\
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Add the row CSV_Arr[][] at index i to Food_Arr[][]\
-&nbsp;&nbsp;&nbsp;&nbsp;End If\
-&nbsp;&nbsp;&nbsp;&nbsp;i += 1\
-End For
-
-Return Food_Arr[][]\
 END
+
+**nutrition_level_filter**
+
+START\
+FUNCTION nutrition_level_filter(nutrient_input, nutrient_level, data):\
+IF nutrient_input is not a valid non-empty string:\
+Raise "The nutrient must be a non-empty string" error\
+IF nutrient_level is not a valid non-empty string:\
+Raise "The nutrient level must be a non-empty string" error\
+IF data is not a DataFrame:\
+Raise "The provided data is not a valid DataFrame" error\
+CALL nutrition_filter_min_max(nutrient_level) \
+TO get the range of values (p_low, p_high) for the nutrient level\
+Initialize food_arr as an empty array\
+IF nutrient_input is not found in the data: 
+Raise 'Nutrient 'name' not found in the table" error\
+LOOP through each item in the data\
+IF the nutrient value matches the filter criteria\
+APPEND the Boolean value to the food_arr. \
+Return the array with Boolean values.\
+END
+
 
 ## 4. User Interface Design
 
@@ -581,9 +665,11 @@ The wireframes correspond to different screens in the user journey as described 
 - **User Flow**: Simple decision-making process at the beginning, either to exit the app or proceed to the main interface.
 - **Justification**: This screen minimizes decision fatigue by offering only two key choices, streamlining the user’s first interaction with the application.
 
-##### **Wireframe 2: Nutrition Filter**
+##### **Updated Wireframe 2: Nutrition Filter**
 
-![Nutrition Filter](./NutritionFilterWireframe.png)
+![Nutrition Filter](./NutritionFilterWireframe1.png)
+![Nutrition Filter](./NutritionFilterWireframe2.png)
+<span style="color:red">**Image Updated to have "nutrition range" and "nutrition level" sections navigated to via tabs on the nutrition filer screen**
 
 - **Visual Components**:
     - Two filtering sections: one for "Nutrition Range" and one for "Nutrition Level."
@@ -611,9 +697,10 @@ The wireframes correspond to different screens in the user journey as described 
 - **User Flow**: A simple search leads to clear and actionable next steps, allowing users to drill down into the data if needed.
 - **Justification**: This wireframe provides a straightforward way for users to search for a specific food, see its data, and perform advanced actions like breakdowns and calculations, enhancing usability.
 
-##### **Wireframe 4: Nutrition Breakdown**
+##### **Updated Wireframe 4: Nutrition Breakdown**
 
 ![Nutrition Breakdown](./NutritionBreakdownWireframe.png)
+<span style="color:red">**Image Updated to remove the food selection input, leaving only the text input**
 
 - **Visual Components**:
     - Input field for food.
@@ -627,13 +714,13 @@ The wireframes correspond to different screens in the user journey as described 
 ##### **Wireframe 5: Weight Calculator**
 
 ![Weight Calculator](./WeightCalculatorWireframe.png)
-
+<span style="color:red">**Removed the graphical display of data, leaving only table**
 - **Visual Components**:
     - Input field for food and weight.
     - Results table with calculated values based on the input weight.
 - **Functional Justification**:
     - **Weight input**: Allows users to calculate nutritional values based on a specific serving size, providing personalized data.
-    - **Graph and results table**: These visually and numerically display the calculated values, ensuring users get both a detailed and high-level view.
+    - <span style="color:red">**Results table**: These numerically display the calculated values, ensuring users get a detailed view of the data.
 - **User Flow**: Users input food and weight, then receive tailored nutritional data.
 - **Justification**: This wireframe adds personalization by allowing users to adjust serving sizes and see the nutritional impact. It’s especially useful for users tracking their intake or tailoring it to specific needs.
 
