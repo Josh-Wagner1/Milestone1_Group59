@@ -252,9 +252,9 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 ### 3.2	System Components
 
 #### <span style="color:red"> 3.2.1 Updated Functions
+<span style="color:red">This section is structurally similar to M1 but all datastructures and functions have been updated/added to match the final program.
 
-
-### **1. load_data**
+### <span style="color:red">**1. load_data (Replaces ReadLines)**
 
 - **Description**: Loads the nutritional data from a CSV file into a pandas DataFrame. It ensures error handling for missing or empty files.
 - **Input Parameters**:
@@ -266,7 +266,7 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 ---
 
-### **2. filter_food_by_name**
+### <span style="color:red">**2. filter_food_by_name (Formally named Search_All_Foods)** 
 
 - **Description**: Filters the DataFrame for food items that contain the specified food_name (partial match, case-insensitive).
 - **Input Parameters**:
@@ -279,7 +279,7 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 ---
 
-### **3. filter_food_by_exact_name**
+### <span style="color:red">**3. filter_food_by_exact_name (Formally named Search_Single_Food)**
 
 - **Description**: Filters the DataFrame for food items that exactly match the specified food_name (case-insensitive).
 - **Input Parameters**:
@@ -306,12 +306,12 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 ---
 
-### **5. calculate_nutrients**
+### **<span style="color:red">5. calculate_nutrients (Formerly known as Weight_Calculator)**
 
 - **Description**: Calculates the nutritional values for a specified weight of a food item.
 - **Input Parameters**:
   - food_name (*str*): The exact name of the food item.
-  - weight (*float*): The weight in grams for which to calculate the nutrients.
+  - weight (*string*): The weight in grams for which to calculate the nutrients. Converted to a float inside the function.
   - data (*pd.DataFrame*): The DataFrame containing the nutritional data.
 - **Return Value**: 
   - A pandas Series containing the scaled nutritional values for the specified weight.
@@ -330,13 +330,13 @@ A Nutritionist is a person that advises their clients on their diet and how it i
     -   nutrient_min_input  (str): The minimum value of the nutrient.
     -   nutrient_max_input  (str): The maximum value of the nutrient.
     -   data  (pd.DataFrame): The data to search through.
--   **Return Value**: Likely returns a DataFrame or a list of food items that match the nutrient range criteria, though it is not fully visible in the snippet.
+-   **Return Value**: Returns a DataFrame or a list of food items that match the nutrient range criteria, though it is not fully visible in the snippet.
     
 -   **Side Effects**: Raises  TypeError  if  data  is not a DataFrame and  ValueError  if inputs for nutrient name, minimum, or maximum are invalid.
 
 ---
 
-### **7. nutrition_filter_min_max**
+### <span style="color:red">**7. nutrition_filter_min_max (New)**
 
 -   **Description**: Returns the minimum and maximum percentage values for a nutrient based on the given level (low, medium, or high).
     
@@ -364,6 +364,8 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 
 #### <span style="color:red"> 3.2.2 Updated Data Structures / Data Sources
+
+<span style="color:red">Note: This section is identical to M1 except all the datastructures have been renamed during the development process.
 
 ### 1.  **file_path  (str)**
 
@@ -444,6 +446,7 @@ A Nutritionist is a person that advises their clients on their diet and how it i
 
 
 #### <span style="color:red"> 3.2.3 Updated Detailed Design
+<span style="color:red">This section was changed entirely to match the final program.
 
 **load_data** 
 
@@ -685,6 +688,7 @@ The wireframes correspond to different screens in the user journey as described 
 ##### **Wireframe 3: Food Search**
 
 ![Food Search](./FoodSearchWireframe.png)
+<span style="color:red">**Actions was made redundant and removed from the final program**
 
 - **Visual Components**:
     - Input field for food name.
