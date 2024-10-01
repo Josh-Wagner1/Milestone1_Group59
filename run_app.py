@@ -188,11 +188,16 @@ class MainFrame(MFrame):
         search = self.m_txtNB.GetValue()
         data = self.table.data
 
-        selected_food = nutrition_breakdown(search, data)
-        ref_food = selected_food.iloc[2:-1]
+        nutrition = nutrition_breakdown(search, data).iloc[2:-1].reset_index()
+        nutrition.columns = ['Nutrient', 'NutritionValue']
+        nutrition = nutrition.sort_values(by='NutritionValue', ascending=False)
 
-        figure = self.plot_pie_chart(ref_food)
-
+        
+        nutritionTop8 = pd.concat([nutrition.head(8), 
+                        pd.DataFrame({'Nutrient': ['Others'], 
+                                'NutritionValue': [nutrition['NutritionValue'][8:].sum()]})], 
+                                ignore_index=True)
+        figure = self.plot_pie_chart(nutritionTop8.set_index('Nutrient')['NutritionValue'])
         h, w = self.m_NBGraph.GetSize()
         figure.set_size_inches(h / figure.get_dpi(), w / figure.get_dpi())
         canvas = FigureCanvasWxAgg(self.m_NBGraph, -1, figure)
@@ -200,19 +205,22 @@ class MainFrame(MFrame):
         self.Layout()
 
     def plot_pie_chart(self, data):
-        explode = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
-        figure_score, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
+            explode = [0.1] * len(data) 
+            figure_score, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
 
-        ax1.pie(data, labels=data.index, autopct='%1.1f%%', startangle=90, explode=explode, shadow=True)
-        ax1.set_title(u'Pie Chart')
-        ax1.axis('on')
+            ax1.pie(data, labels=data.index, autopct='%1.1f%%', startangle=90, shadow=True, explode=explode, textprops={'fontsize': 7})
+            ax1.set_title('Pie Chart')
+            ax1.axis('equal') 
 
-        ax2.bar(data.index, data)
-        ax2.set_title('Bar Chart')
-        ax2.set_xlabel(u'Type of nutrient')
-        ax2.set_ylabel(u'Weight in grams')
+            ax2.bar(data.index, data, color='skyblue', edgecolor='black')
+            ax2.set_title('Bar Chart')
+            ax2.set_xlabel('Type of Nutrient')
+            ax2.set_ylabel('Weight in grams')
+            ax2.set_xticks(range(len(data)))
+            ax2.set_xticklabels(data.index, rotation=45, ha='right', fontsize=8)
 
-        return figure_score
+            plt.tight_layout()
+            return figure_score
 
     def f_WCCalculate( self, event ):
         search = self.m_txtWC.GetValue()
