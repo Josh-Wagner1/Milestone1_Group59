@@ -1,4 +1,46 @@
-* c8faffc 2024-09-07 by [Juan Martinez] | * Software Design Document 	- Adding Exit Button to Justification * Project Plan Document 	- Contribution Juan * Delete Visual Design Example (HEAD -> Josh, origin/main, origin/HEAD, main)
+* 3a9396f 2024-10-01 by [Josh-Wagner1] | Final edits to PP and SDD before submission (HEAD -> Josh, origin/main, origin/HEAD, main)
+*   59773c9 2024-09-30 by [gemmamanns] | Merge pull request #18 from Josh-Wagner1/Gemma
+|\  
+| * 24868d8 2024-09-30 by [gemmamanns] | Updated project plan
+| * b51cdd2 2024-09-30 by [gemmamanns] | Updated wireframes in SDD
+| * 31ff7db 2024-09-30 by [gemmamanns] | Update 3.2.1 and 3.2.2 in SDD
+* | ffb578d 2024-09-30 by [Josh-Wagner1] | Added GUI.pdf
+* |   14cbf46 2024-09-29 by [Juan Martinez] | Merge branch 'main' of github.com:Josh-Wagner1/Milestone1_Group59 into Juan
+|\ \  
+| * | 5c6c7ac 2024-09-29 by [gemmamanns] | Merge pull request #17 from Josh-Wagner1/Gemma
+| |\| 
+| | * 56c89b5 2024-09-29 by [gemmamanns] | updated gantt chart plus png file, beginning to update software design document
+| | *   c377afb 2024-09-29 by [gemmamanns] | Merge pull request #16 from Josh-Wagner1/main
+| | |\  
+* | | | ff0e27e 2024-09-29 by [Juan Martinez] | Add Coverage Testing Report
+|/ / /  
+* | / 14dc35e 2024-09-29 by [Juan Martinez] | Add Unit Test Report
+| |/  
+|/|   
+* | 70add76 2024-09-29 by [Juan Martinez] | Test All Functions - Unit Test (49passed, 100%) -Coverage Test (135 Statements, 100%) -Branch Coverage Test (135 Statements, 100%)
+* | 4f07522 2024-09-28 by [Josh-Wagner1] | Added executive summary and major fixes to UI
+* | c6e24a6 2024-09-27 by [Josh-Wagner1] | Completed full implementation of the functions with the GUI including error handling
+* | 1d65799 2024-09-26 by [Josh-Wagner1] | Nutrition filters implemented
+* | 40ad428 2024-09-23 by [Josh-Wagner1] | Improvements to run_app.py
+* | 3669344 2024-09-22 by [Juan Martinez] | Add new functions and unit tests - load_data function - filter_food_by_exact_name - nutrition_breakdown - calculate_nutrition - load_data unit tests - filter_food_by_exact_name unit tests
+* | 07e1a80 2024-09-22 by [gemmamanns] | Merge pull request #15 from Josh-Wagner1/Gemma
+|\| 
+| * 3ea6e8b 2024-09-22 by [gemmamanns] | minor correction to nutrition_level_filter
+| * 39364de 2024-09-22 by [gemmamanns] | minor amendments to functions, importing new functions into run_app.py
+| * d3b82ae 2024-09-22 by [gemmamanns] | amending nutrition range filter
+| * aefbd0e 2024-09-22 by [gemmamanns] | Update all_functions.py
+| *   3fddd62 2024-09-22 by [gemmamanns] | Merge pull request #13 from Josh-Wagner1/main
+| |\  
+* | | dd243e9 2024-09-22 by [Josh-Wagner1] | Implemented FS and basic navigational functionality
+| |/  
+|/|   
+* | 87ba1b3 2024-09-21 by [Josh-Wagner1] | Updates to GUI and start of backend
+|/  
+* 62b4406 2024-09-20 by [Josh-Wagner1] | Adding V2 of the GUI
+* e41f4b6 2024-09-18 by [Juan Martinez] | Food Search Function Feature.
+* 8384379 2024-09-18 by [Josh-Wagner1] | Adding V1 of GUI (WIP)
+* bb736b2 2024-09-07 by [Josh-Wagner1] | Final commit adding submission files
+* c8faffc 2024-09-07 by [Juan Martinez] | * Software Design Document 	- Adding Exit Button to Justification * Project Plan Document 	- Contribution Juan * Delete Visual Design Example
 *   6fa5551 2024-09-07 by [gemmamanns] | Merge pull request #12 from Josh-Wagner1/Gemma
 |\  
 | * f0dd958 2024-09-07 by [gemmamanns] | Added Acomplishments, deleted unnecessary .pngs and updated 1.2 of the SDD to be more thorough
